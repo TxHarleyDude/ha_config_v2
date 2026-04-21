@@ -1,0 +1,41 @@
+automation:
+  - id: "person_home"
+    alias: "Person Home"
+    initial_state: true
+    trigger:
+      - trigger: state
+        entity_id:
+          - person.rick_fox
+          - person.tracy_fox
+        to: "home"
+      # HA reload or start
+      - trigger: event
+        event_type: automation_reloaded
+      - trigger: homeassistant
+        event: start
+    #condition:
+    #  condition: or
+    #  conditions:
+    #    - condition: state
+    #      entity_id: input_boolean.rick_arriving
+    #      state: "on"
+    #    - condition: state
+    #      entity_id: input_boolean.tracy_arriving
+    #      state: "on"
+    action:
+      - choose:
+        - conditions:
+          - condition: template
+            value_template: "{{ state_attr(trigger.entity_id,'user_id') == 'c04bc876fa7d454084bdfdf8a153a476' }}"
+          sequence:
+            action: script.rick_home
+        - conditions:
+          - condition: template
+            value_template: "{{ state_attr(trigger.entity_id,'user_id') == 'fe6a249661664e96a19486145703ad8c' }}"
+          sequence:
+            action: script.tracy_home
+        - conditions:
+          - condition: template
+            value_template: "{{ state_attr(trigger.entity_id,'user_id') == '1022cf8e248e41f6a895c17756600a02' }}"
+          sequence:
+            action: script.geoff_home

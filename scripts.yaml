@@ -1,0 +1,30 @@
+start_spotify:
+  sequence:
+  - action: media_player.select_source
+    target:
+      entity_id:
+      - media_player.spotify_1237516216
+    data:
+      source: 65" TCL Roku TV
+  - action: media_player.play_media
+    data:
+      media:
+        media_content_id: https://open.spotify.com/playlist/37i9dQZF1DWXRqgorJj26U?si=4mHODOU_QOa2kEWCanViVg&pi=HFqyvxPJQ_y7C
+        media_content_type: playlist
+        metadata: {}
+    target:
+      entity_id: media_player.spotify_1237516216
+  alias: Start Spotify
+  description: ''
+test_arrive_home:
+  sequence:
+  - condition: template
+    value_template: '{{ is_state(''input_select.ricks_status'', ''Away'') }}'
+  - action: input_select.select_option
+    metadata: {}
+    target:
+      entity_id: input_select.ricks_status
+    data:
+      option: Arriving
+  alias: Test -Arrive Home
+  description: ''

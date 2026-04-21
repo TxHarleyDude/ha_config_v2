@@ -1,0 +1,107 @@
+automation:
+  - id: "person_away"
+    alias: "Person Away"
+    initial_state: true
+    trigger:
+      - trigger: state
+        entity_id:
+          - person.rick_fox
+          - person.tracy_fox
+        to: "not_home"
+    action:
+      - choose:
+        - conditions:
+          - condition: template
+            value_template: "{{ state_attr(trigger.entity_id,'user_id') == 'c04bc876fa7d454084bdfdf8a153a476' }}"
+          sequence:
+            action: script.rick_away
+        - conditions:
+          - condition: template
+            value_template: "{{ state_attr(trigger.entity_id,'user_id') == 'fe6a249661664e96a19486145703ad8c' }}"
+          sequence:
+            action: script.tracy_away
+        - conditions:
+          - condition: template
+            value_template: "{{ state_attr(trigger.entity_id,'user_id') == '1022cf8e248e41f6a895c17756600a02' }}"
+          sequence:
+            action: script.geoff_away
+
+  - id: person_entering_home_zone
+    alias: Person Entering Home Zone
+    trigger:
+      # Entered the work zone
+      - trigger: state
+        entity_id:
+          - person.rick_fox
+          # - person.tracy_fox
+        to: "home"
+    condition:
+      - condition: template 
+        value_template: "{{ is_state(trigger.entity_id, 'home') }}"
+    action:
+      - choose:
+        - conditions:
+          - condition: template
+            value_template: "{{ state_attr(trigger.entity_id,'user_id') == 'c04bc876fa7d454084bdfdf8a153a476' }}"
+          sequence:
+            action: script.rick_arriving
+        - conditions:
+          - condition: template
+            value_template: "{{ state_attr(trigger.entity_id,'user_id') == 'fe6a249661664e96a19486145703ad8c' }}"
+          sequence:
+            action: script.tracy_away
+
+  - id: person_leaving_home_zone
+    alias: Person Leaving Home Zone
+    trigger:
+      # Entered the work zone
+      - trigger: state
+        entity_id: 
+          - person.rick_fox
+          # - person.tracy_fox
+        from: "home"
+        
+        #event: leave
+    action:
+      - choose:
+        - conditions:
+          - condition: template
+            value_template: "{{ state_attr(trigger.entity_id,'user_id') == 'c04bc876fa7d454084bdfdf8a153a476' }}"
+          sequence:
+            action: script.rick_leaving
+        - conditions:
+          - condition: template
+            value_template: "{{ state_attr(trigger.entity_id,'user_id') == 'fe6a249661664e96a19486145703ad8c' }}"
+          sequence:
+            action: script.tracy_away
+
+  - id: person_home
+    alias: Person Home
+    trigger:
+      # Entered the work zone
+      - trigger: webhook
+        allowed_methods:
+          - POST
+          - PUT
+        webhook_id: "on_wifi"
+        local_only: false
+    condition:
+      # Condition to check if it is already set to leaving.
+      - condition: template 
+        value_template: "{{ is_state('input_select.ricks_status', 'Arriving') }}"
+    action:
+      - action: script.rick_home
+
+  - id: last_person_home_nobody
+    alias: "Last Person Home - Nobody"
+    trigger:
+      - trigger: state
+        entity_id:
+          - group.people_home
+        to: "off"
+    action:
+      - action: input_select.set_options
+        target:
+          entity_id: input_select.last_person_home
+        data:
+          option: "Nobody"

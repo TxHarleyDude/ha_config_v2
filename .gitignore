@@ -1,0 +1,20 @@
+# Home Assistant sensitive data
+secrets.yaml
+.storage/
+.cloud/
+
+# Database and logs
+*.db
+*.db-shm
+*.db-wal
+*.log
+
+# Backups and temporary files
+backups/
+downloads/
+*.tmp
+
+# OS/Editor specific
+.DS_Store
+__pycache__/
+*.swp

@@ -1,0 +1,39 @@
+input_boolean:
+  rick_home:
+    name: Rick Home
+    icon: mdi:home
+
+  tracy_home:
+    name: Tracy Home
+    icon: mdi:home
+
+  rick_phone_plugged_in:
+    name: Rick's Phone Plugged In
+    icon: mdi:battery-charging
+
+  tracy_phone_plugged_in:
+    name: Tracy's Phone Plugged In
+    icon: mdi:battery-charging
+    
+  # guests are present, based on automation or some other means
+  guest_mode:
+    name: Guest Mode
+    icon: mdi:badge-account
+
+input_select:
+  last_person_home:
+    name: Last Person Home
+    icon: mdi:account
+    options:
+      - Rick
+      - Tracy
+      - Both
+      - Nobody
+
+# on/off states
+group:
+  people_home:
+    entities:
+      - input_boolean.rick_home
+      - input_boolean.tracy_home
+      - input_boolean.guest_mode

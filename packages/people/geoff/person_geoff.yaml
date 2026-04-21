@@ -1,0 +1,26 @@
+script:
+  geoff_away:
+    alias: "Geoff Away"
+    sequence:
+      # Change the input boolean to off
+      - action: input_boolean.turn_off
+        entity_id: input_boolean.geoff_home
+
+      - action: persistent_notification.create
+        data:
+          notification_id: "1233456788"
+          title: "Person Alert"
+          message: "Geoff is Away"
+
+  geoff_home:
+    alias: "Geoff Home"
+    sequence:
+      # Change the input boolean to off
+      - action: input_boolean.turn_on
+        entity_id: input_boolean.geoff_home
+
+      - action: persistent_notification.create
+        data:
+          notification_id: "1233456788"
+          title: "Person Alert"
+          message: "Geoff is Home"

@@ -1,0 +1,36 @@
+zone:
+  - name: Near Home
+    latitude: !secret latitude
+    longitude: !secret longitude
+    radius: 300
+    icon: mdi:home-alert
+
+input_boolean:
+  rick_arriving:
+    name: Rick Arriving
+    icon: mdi:account-arrow-right
+    initial: false
+
+  tracy_arriving:
+    name: Tracy Arriving
+    icon: mdi:account-arrow-right
+    initial: false
+
+input_select: 
+  ricks_status:
+    name: Rick Status
+    options:
+      - Home
+      - Leaving
+      - Arriving
+      - Away
+    initial: Home
+
+  tracys_status:
+    name: Tracy Status
+    options:
+      - Home
+      - Leaving
+      - Arriving
+      - Away
+    initial: Home

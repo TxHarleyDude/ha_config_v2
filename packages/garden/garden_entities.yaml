@@ -1,0 +1,4 @@
+input_boolean:
+  seed_starting:
+    name: Seed Starting
+    icon: mdi:sprout

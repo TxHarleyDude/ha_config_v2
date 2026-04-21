@@ -1,0 +1,19 @@
+input_boolean:
+  house_occupied:
+    name: House Occupied
+    icon: mdi:home
+
+  night_mode:
+    name: Night Mode
+    icon: mdi:weather-night
+
+input_select:
+  house_mode:
+    name: House Mode
+    options:
+      - Home
+      - Night
+      - Away
+      - Vacation
+    initial: Home
+    icon: mdi:home

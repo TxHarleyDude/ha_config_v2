@@ -1,0 +1,14 @@
+automation:
+  - id: leaving_home_zone
+    alias: Leaving Home Zone
+    trigger:
+      - trigger: zone
+        entity_id: device_tracker.ricks_iphone
+        zone: zone.home
+        event: leave
+    action:
+      - action: input_select.select_option 
+        target:
+          entity_id: input_select.ricks_status
+        data:
+          option: Leaving

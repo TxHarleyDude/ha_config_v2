@@ -1,0 +1,71 @@
+automation:
+  # Need to check if house is occupied before turning off
+  # Maybe setup a timer to check again after 30 minutes
+  - alias: Sink Light off at Night
+    id: sink_light_off_at_night
+    trigger:
+      # morning
+      - trigger: sun
+        event: sunrise
+        offset: "+00:30:00"
+      # night
+      - trigger: time
+        at: "22:30:00"
+      # kitchen not occupied
+      - trigger: state
+        entity_id: input_boolean.kitchen_occupied
+        to: "off"
+    action:
+      - action: light.turn_off
+        entity_id: light.kitchen_sink_light
+
+  - alias: Sink Light on in Morning
+    id: sink_light_on_in_morning
+    trigger:
+      trigger: time
+      at: "03:15:00"
+    condition:
+      - condition: state
+        entity_id: binary_sensor.workday_sensor
+        state: "on"
+    action:
+      - action: light.turn_on
+        entity_id: light.kitchen_sink_light
+        data:
+          brightness: 128
+
+  - alias: Sink Light on if House Unoccupied and Dark
+    id: sink_light_on_if_house_unoccupied_and_dark
+    trigger:
+      trigger: sun
+      event: sunset
+      offset: "-00:30:00"
+    condition:
+      - condition: state
+        entity_id: input_boolean.house_occupied
+        state: "off"
+    action:
+      - action: light.turn_on
+        entity_id: light.kitchen_sink_light
+
+  - id: sink_light_on_motion
+    alias: "Kitchen: Turn on Sink Light via Motion"
+    description: "Turns on the sink light at 50% if it's dark and motion is detected."
+    trigger:
+      - trigger: state
+        entity_id: input_boolean.kitchen_occupied
+        to: "on"
+    condition:
+      - condition: numeric_state
+        entity_id: sensor.kitchen_motion_sensor_illuminance
+        below: 50  # Adjust this value based on your room's darkness levels
+      - condition: state
+        entity_id: input_boolean.night_mode
+        state: "off"
+    action:
+      - action: light.turn_on
+        target:
+          entity_id: light.kitchen_sink_light
+        data:
+          brightness: 128
+    mode: single

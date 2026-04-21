@@ -1,0 +1,58 @@
+# Dryer notes:
+# Closing dryer door draw causes vibration
+# Dryer needs to detect vibration for some amount of time 
+# before saying the dryer is in fact running
+automation:
+  - id: washer_dryer_stop_notification
+    alias: "Washer Dryer Stop Notification"
+    initial_state: true
+    trigger:
+      - trigger: state
+        entity_id:
+          - binary_sensor.laundry_room_dryer_vibration
+        to: "off"
+# or condition to check for either dryer or washer boolean 
+    action:
+      # Send a a critical notification
+      - action: script.general_notification
+        data:
+          title: >-
+            {% if state_attr(trigger.entity_id,'friendly_name') == 'Clothes Dryer Vibration' %}
+              {{ "Clothes Dryer Alert" }}
+            {% elif state_attr(trigger.entity_id,'friendly_name') == 'Another UPS' %}
+              {{ "Clothes Washer Alert" }}
+            {% endif %}
+          message: "🚨 Clothes dryer has completed."
+          devices: "rf"
+          priority: "critical"
+          tag: "laundry_room_status"
+
+  - id: dryer_start_notification
+    alias: "Dryer Start Notification"
+    initial_state: true
+    trigger:
+      - trigger: state
+        entity_id:
+          - binary_sensor.laundry_room_dryer_vibration
+        to: "on"
+    action:
+      - action: timer.start
+        data:
+          entity_id: timer.dryer_start_timer
+
+  - id: dryer_timer_expired
+    alias: Dryer Timer Expired
+    initial_state: true
+    trigger:
+      - trigger: event
+        event_type: timer.finished
+        event_data:
+          entity_id: timer.dryer_start_timer
+    condition:
+      - condition: state
+        entity_id: binary_sensor.laundry_room_dryer_vibration
+        state: "on"
+    action: 
+      action: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.laundry_dryer_running

@@ -1,0 +1,54 @@
+automation:
+  - id: hvac_filter_days_till_replace
+    alias: HVAC Filter Days Till Replace
+    mode: single
+    trigger:
+      - trigger: time
+        at: "01:00:00"
+      - trigger: event
+        event_type: automation_reloaded
+      - trigger: homeassistant
+        event: start
+    action:
+      - action: calendar.get_events
+        data:
+          duration:
+            days: 90
+        target:
+          entity_id: calendar.maintenance
+        response_variable: agenda
+      - action: input_number.set_value
+        data:
+          entity_id: input_number.hvac_filter_days_till_replacement
+          value: >-
+            {% for event in agenda['calendar.maintenance']['events'] %} 
+            {% if event.summary == 'Replace HVAC Filter' %}
+              {% set t = now() %}
+              {% set midnight = today_at() %}
+              {% set datetime = event.start | as_datetime | as_local %}
+              {% set delta = (datetime - midnight) %}
+              {{ delta.days }}
+              {% break %}
+            {% endif %}
+            {% endfor %}
+
+  - id: hvac_filter_replacement_day
+    alias: HVAC Filter Replacement Day
+    mode: single
+    trigger:
+      - trigger: template
+        value_template: "{{ states.input_number.hvac_filter_days_till_replacement.state|int == 0 }}"
+      - trigger: event
+        event_type: automation_reloaded
+      - trigger: homeassistant
+        event: start
+    action:
+      - action: script.general_notification
+        data:
+          title: "Maintenance Notification"
+          message: "HVAC Filter Needs Replacing."
+          devices: "all"
+          priority: "time-sensitive"
+          tag: "maintenance_notification_hvac_filter"
+      - action: input_boolean.turn_on
+        entity_id: input_boolean.hvac_filter_replacement_required

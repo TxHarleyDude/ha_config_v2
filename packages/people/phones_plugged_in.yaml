@@ -1,0 +1,44 @@
+automation:
+  # John
+  #
+  # John's phone is plugged in and charging
+  - id: "rick_phone_plugged_in"
+    alias: "Rick's phone is plugged in"
+    mode: "single"
+    trigger:
+      - trigger: state
+        entity_id: sensor.ricks_iphone_battery_state
+        to: "Charging"
+      - trigger: state
+        entity_id: sensor.ricks_iphone_battery_state
+        to: "Full"
+    condition:
+      - condition: state
+        entity_id: input_boolean.rick_phone_plugged_in
+        state: "off"
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: sensor.ricks_iphone_battery_state
+            state: "Charging"
+          - condition: state
+            entity_id: sensor.ricks_iphone_battery_state
+            state: "Full"
+    action:
+      - action: input_boolean.turn_on
+        entity_id: input_boolean.rick_phone_plugged_in
+
+  - id: "rick_phone_unplugged"
+    alias: "Rick's phone is unplugged"
+    mode: "single"
+    trigger:
+      - trigger: state
+        entity_id: sensor.ricks_iphone_battery_state
+        to: "Not Charging"
+    condition:
+      - condition: state
+        entity_id: sensor.ricks_iphone_battery_state
+        state: "Not Charging"
+    action:
+      - action: input_boolean.turn_off
+        entity_id: input_boolean.rick_phone_plugged_in

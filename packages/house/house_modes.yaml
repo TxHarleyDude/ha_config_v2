@@ -1,0 +1,89 @@
+automation:
+  - id: house_occupancy_changes
+    alias: House Occupancy Changes
+    trigger:
+      - trigger: state
+        entity_id: group.people_home
+    action:
+      - choose:
+        - conditions:
+            - condition: state
+              entity_id: group.people_home
+              state: "on"
+          sequence:
+            - action: input_select.select_option
+              target:
+                entity_id: input_select.house_mode
+              data:
+                option: Home
+        - conditions:
+            - condition: state
+              entity_id: group.people_home
+              state: "off"
+          sequence:
+            - action: input_select.select_option
+              target:
+                entity_id: input_select.house_mode
+              data:
+                option: Away
+
+  - id: house_modes_changes
+    alias: House Mode Changes
+    trigger:
+      - trigger: state
+        entity_id: input_select.house_mode
+    action:
+      - choose:
+        - conditions:
+            - condition: state
+              entity_id: input_select.house_mode
+              state: Night
+          sequence:
+            action: script.house_mode_night
+        - conditions:
+            - condition: state
+              entity_id: input_select.house_mode
+              state: Away
+          sequence:
+            action: script.house_mode_night
+        - conditions:
+            - condition: state
+              entity_id: input_select.house_mode
+              state: Home
+          sequence:
+            action: script.house_mode_home
+
+script:
+  house_mode_night:
+    alias: "House Mode - Night"
+    sequence:
+      - choose:
+        - conditions:
+            - condition: state
+              entity_id: input_select.house_mode
+              state: Night
+          sequence:
+          - action: script.general_notification
+            data:
+              title: "Night Mode Status Change"
+              message: "Night mode is active"
+              devices: "rf"
+              priority: "time-sensitive"
+              tag: "night_mode_activation_status"
+
+  house_mode_home:
+    alias: "House Mode - Home"
+    sequence:
+      - choose:
+        - conditions:
+            - condition: state
+              entity_id: input_select.house_mode
+              state: Home
+          sequence:
+          - action: script.general_notification
+            data:
+              title: "Night Mode Status Change"
+              message: "Night mode is not active"
+              devices: "rf"
+              priority: "time-sensitive"
+              tag: "night_mode_activation_status"

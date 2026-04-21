@@ -1,0 +1,11 @@
+input_boolean:
+  bedtime:
+    name: Bedtime
+    icon: mdi:sleep
+
+template:
+  - binary_sensor:
+      - name: "Armed Night Mode"
+        state: >-
+          {{ is_state('alarm_control_panel.alarmo', 'armed_night') }}
+

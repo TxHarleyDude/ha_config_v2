@@ -1,0 +1,21 @@
+automation:
+  - id: "grow_light_on_off"
+    alias: "Grow Light On/Off"
+    initial_state: true
+    trigger:
+      - trigger: time
+        at: "06:00:00"
+        variables:
+          mode: 'on'
+      - trigger: time
+        at: "22:00:00"
+        variables:
+          mode: 'off'
+    condition:
+      - condition: state
+        entity_id: input_boolean.seed_starting
+        state: "on"
+    action:
+      - action: "switch.turn_{{ mode }}"
+        target:
+          entity_id: switch.office_outlet_1

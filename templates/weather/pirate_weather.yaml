@@ -1,0 +1,33 @@
+###################################################################################################
+## Templates -  Pirate Weather
+## https://github.com/jazzyisj/home-assistant-config/blob/879750e017878080923eb4d7b6ea760d0fe8a4cc/templates/weather/pirate_weather.yaml
+###################################################################################################
+- trigger:
+    - trigger: homeassistant
+      event: start
+
+    - trigger: event
+      event_type: event_template_reloaded
+
+    - trigger: time_pattern
+      minutes: "/1"
+  binary_sensor:
+    - name: "PirateWeather Integration Connected"
+      unique_id: pirateweather_integration_connected
+      # picture: !secret PIRATE_ICON
+      device_class: connectivity
+      state: "{{ integration_entities('pirateweather') | select('has_value') | list | count > 0 }}"
+
+- binary_sensor:
+    - name: "PirateWeather Connected Alert"
+      unique_id: pirateweather_connected_alert
+      device_class: problem
+      delay_on: 300
+      state: >
+        {{ is_state('binary_sensor.pirateweather_integration_connected', 'off') }}
+
+- sensor:
+    - name: "Pirateweather Current Condition" #WEATHER while testing
+      unique_id: pirateweather_current_condition
+      state: "{{ states('weather.home') }}"
+      availability: "{{ has_value('weather.home') }}"

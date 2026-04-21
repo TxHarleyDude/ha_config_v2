@@ -1,0 +1,90 @@
+conversation:
+  intents:
+    backgate:
+      - "(open|close) the car door"
+    notifications:
+      - "is there any notifications"
+    bedtime:
+      - "(set|turn on|activate) bedtime [mode]"
+
+intent_script:
+  backgate:
+    speech:
+      text: "I will"
+
+  notifications:
+    speech:
+      text: "Let me check"
+      # setup action to run script to check number of notifications
+    action:
+      - action: script.check_for_notifications
+
+  bedtime:
+    speech:
+      text: ""
+    action:
+      - action: notify.alexa_media_rick_s_echo_dot
+        data:
+          message: Bedtime activated
+
+####################################################
+## Automations triggered by conversations
+####################################################
+
+automation:
+  ####################################################
+  ## Set bedtime mode via voice assisatant
+  ####################################################
+  - alias: Conversation - Set Bedtime Mode
+    description: "Voice command to set bedtime mode"
+    trigger:
+      - trigger: conversation
+        command: Set bedtime mode
+    action:
+      - action: homeassistant.turn_on
+        entity_id: input_boolean.bedtime
+    mode: single
+
+  ####################################################
+  ## Not a real action at this point. Used for testing
+  ####################################################
+  - alias: Conversation - Open/Close Back Gate
+    description: "Voice command to open/close gate"
+    trigger:
+      - trigger: conversation
+        command: Open back gate
+      - trigger: conversation
+        command: Close back gate
+    action:
+      - action: notify.alexa_media_rick_s_echo_dot
+        data:
+          message: Gate Opening
+    mode: single
+
+  ####################################################
+  ## Close garage door via voice assisatant
+  ####################################################
+  - alias: Conversation - Close Garage Door
+    description: "Voice command to close garage door"
+    trigger:
+      - trigger: conversation
+        command: Close garage door
+    action:
+      - action: switch.turn_on
+        entity_id: switch.garage_door_control
+    mode: single
+
+  ####################################################
+  ## Set media mode - LED Light strip behind TV
+  ####################################################
+  - alias: Conversation - Set media mode
+    description: "Voice command to set media mode"
+    trigger:
+      - trigger: conversation
+        command: Set media mode
+    action:
+      - action: light.turn_on
+        data:
+          effect: "Rainbow"
+        target:
+          entity_id: light.living_room_tv_leds_tv_light

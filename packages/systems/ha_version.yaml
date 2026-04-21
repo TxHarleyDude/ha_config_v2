@@ -1,0 +1,18 @@
+sensor:
+  - platform: rest
+    name: Hass Main config
+    resource: !secret rest_api_url
+
+    authentication: basic
+    value_template: >
+      {{ value_json.version }}
+    json_attributes:
+      - components
+      - unit_system
+      - config_dir
+      - config_source
+      - version
+    headers:
+      Content-Type: application/json
+      Authorization: !secret rest_api_pass
+      User-Agent: Home Assistant REST sensor

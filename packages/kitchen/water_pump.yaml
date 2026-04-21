@@ -1,0 +1,34 @@
+automation:
+  - id: "water_pump_on_off"
+    alias: "Water Pump On/Off"
+    initial_state: true
+    trigger:
+      - trigger: time
+        at: 02:00:00
+        variables:
+          is_true: '{{ now().strftime("%-a") == "Mon" }}'
+          mode: 'on'
+      - trigger: event
+        event_type: timer.finished
+        event_data:
+          entity_id: timer.water_pump_charger_on
+        variables:
+          is_true: true
+          mode: 'off'
+    condition:
+      - condition: template
+        value_template: "{{ is_true }}"
+    action:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ mode == 'on' }}"
+            sequence:
+              - action: timer.start
+                target:
+                  entity_id: timer.water_pump_charger_on
+
+      - action: "switch.turn_{{ mode }}"
+        target:
+          entity_id: switch.kitchen_water_pump
+

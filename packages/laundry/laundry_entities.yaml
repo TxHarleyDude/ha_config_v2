@@ -1,0 +1,16 @@
+input_boolean:
+  laundry_dryer_running:
+    name: Dryer
+    icon: mdi:tumble-dryer
+
+  laundry_washer_running:
+    name: Washer
+    icon: mdi:washing-machine
+
+# need timer dor dryer and washer vibration 
+timer: 
+  dryer_start_timer:
+    duration: 00:02:00
+
+  washer_start_timer:
+    duration: 00:02:00

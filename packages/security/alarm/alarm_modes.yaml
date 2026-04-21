@@ -1,0 +1,58 @@
+automation:
+  # this automation arms the house based upon the house mode
+  # if house is in night then aram night, etc...
+  - id: alarm_modes_changes
+    alias: Alarm Mode Changes
+    trigger:
+      - trigger: state
+        entity_id: input_select.house_mode
+    action:
+      - choose:
+        - conditions:
+            - condition: state
+              entity_id: input_select.house_mode
+              state: Night
+          sequence:
+            - action: alarm_control_panel.alarm_arm_night
+              target:
+                entity_id: alarm_control_panel.alarmo
+        - conditions:
+            - condition: state
+              entity_id: input_select.house_mode
+              state: Away
+          sequence:
+            - action: alarm_control_panel.alarm_arm_away
+              target:
+                entity_id: alarm_control_panel.alarmo
+        - conditions:
+            - condition: state
+              entity_id: input_select.house_mode
+              state: Home
+          sequence:
+            - action: alarm_control_panel.alarm_disarm
+              target:
+                entity_id: alarm_control_panel.alarmo
+        - conditions:
+            - condition: state
+              entity_id: input_select.house_mode
+              state: Vacation
+          sequence:
+            - action: alarm_control_panel.alarm_arm_vacation
+              target:
+                entity_id: alarm_control_panel.alarmo
+
+  - alias: "Alarm Triggered"
+    id: "alarm_triggered"
+    mode: single
+    trigger:
+      - trigger: state
+        entity_id: alarm_control_panel.alarmo
+        to: "triggered"
+    condition:
+      - condition: state
+        entity_id: group.people_home
+        state: "off"
+    action:
+      - action: alarm_control_panel.alarm_disarm
+        target:
+          entity_id: alarm_control_panel.alarmo

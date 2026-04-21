@@ -1,0 +1,39 @@
+# current setup assumes all occupants are home when night mode triggers
+# need to handle situations for when someone arrives while house is in night mode
+automation:
+  - id: night_mode_activated
+    alias: Night Mode Activated
+    trigger:
+      - trigger: time
+        at: "21:30:00"
+    condition:
+      # Only arm if no motion in sunroom and back door is closed
+      # If the above is not met, figure out how to handle it
+      - condition: state
+        entity_id: binary_sensor.sunroom_motion_occupancy
+        state: "off"
+      - condition: state
+        entity_id: binary_sensor.sunroom_back_door_contact
+        state: "off"
+    action:
+      - action: input_select.select_option
+        target:
+          entity_id: input_select.house_mode
+        data:
+          option: Night
+
+  - id: night_mode_deactivated
+    alias: Night Mode Deactivated
+    trigger:
+      - trigger: time
+        at: "05:30:00"
+    condition:
+      - condition: state
+        entity_id: input_select.house_mode
+        state: Night
+    action:
+      - action: input_select.select_option
+        target:
+          entity_id: input_select.house_mode
+        data:
+          option: Home

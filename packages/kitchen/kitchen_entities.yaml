@@ -1,0 +1,13 @@
+input_boolean:
+  kitchen_occupied:
+    name: Kitchen Occupied
+    icon: mdi:fridge
+
+timer:
+  water_pump_charger_on:
+    duration: "02:00:00"
+    name: Water Pump Charger On
+
+  kitchen_occupancy:
+    duration: "00:05:00"
+    name: Kitchen Occupancy Time

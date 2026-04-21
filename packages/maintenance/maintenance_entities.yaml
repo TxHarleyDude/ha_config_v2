@@ -1,0 +1,10 @@
+input_number:
+  hvac_filter_days_till_replacement:
+    name: HVAC Filter - Days Till Replacement
+    min: 0
+    max: 365
+
+input_boolean:
+  hvac_filter_replacement_required:
+    name: HVAC Filter Replacement Required
+    icon: mdi:air-filter

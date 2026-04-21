@@ -1,0 +1,29 @@
+  - id: water_pump_charger_on
+    alias: Water Pump Charger On
+    trigger:
+      - trigger: time
+        at: "02:00:00"
+    condition:
+      - condition: time
+        weekday:
+          - mon
+    action:
+      - action: switch.turn_on
+        entity_id: switch.kitchen_water_pump
+
+  - id: water_pump_charger_off
+    alias: Water Pump Charger Off
+    mode: single
+    trigger:
+      - trigger: state
+        entity_id: switch.kitchen_water_pump
+        to: "on"
+        for: "1:00:00"
+    condition:
+      - condition: state
+        entity_id: switch.kitchen_water_pump
+        state: "on"
+    action:
+      - action: switch.turn_off
+        target:
+          entity_id: switch.kitchen_water_pump

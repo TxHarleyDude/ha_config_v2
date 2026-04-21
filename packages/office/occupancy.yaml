@@ -1,0 +1,40 @@
+automation:
+  - id: office_occupied
+    alias: Office occupied
+    initial_state: true
+    trigger:
+      - trigger: state
+        entity_id: group.office_motion
+        to: "on"
+    condition:
+      - condition: state
+        entity_id: input_boolean.house_occupied
+        state: "on"
+    action:
+      - action: timer.start
+        target:
+          entity_id: timer.office_motion_timer
+      - action: input_boolean.turn_on
+        entity_id: input_boolean.office_occupied
+
+  - alias: Office unoccupied
+    id: office_unoccupied
+    initial_state: true
+    trigger:
+      - trigger: event
+        event_type: timer.finished
+        event_data:
+          entity_id: timer.office_motion_timer
+    condition:
+      - condition: state
+        entity_id: input_boolean.office_occupied
+        state: "on"
+      - condition: state
+        entity_id: group.office_motion
+        state: "off"
+    action:
+      # Idea for this came from https://github.com/skalavala/mysmarthome/tree/master
+      - action: >
+          {{ 'input_boolean.turn_off' if states('binary_sensor.office_desk_chair') != 'off' else 'timer.start' }}
+        data:
+          entity_id: "{{ 'input_boolean.office_occupied' if states('binary_sensor.office_desk_chair_contact') != 'off' else 'timer.office_motion_timer' }}"

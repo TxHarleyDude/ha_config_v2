@@ -1,0 +1,1518 @@
+2025-11-12 16:46:38.585 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration nws_alerts which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
+2025-11-12 16:46:38.586 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration alarmo which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
+2025-11-12 16:46:38.587 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration hacs which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
+2025-11-12 16:46:38.587 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration alexa_media which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
+2025-11-12 16:46:53.743 ERROR (MainThread) [homeassistant.helpers.event] Error while processing template: Template<template=({{ state_attr('weather.pirateweather', 'temperature') | int }}) renders=2>
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/helpers/template/__init__.py", line 494, in async_render
+    render_result = render_with_context(self.template, compiled, **kwargs)
+  File "/usr/src/homeassistant/homeassistant/helpers/template/context.py", line 45, in render_with_context
+    return template.render(**kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/local/lib/python3.13/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "<template>", line 1, in top-level template code
+  File "/usr/src/homeassistant/homeassistant/helpers/template/__init__.py", line 2084, in forgiving_int_filter
+    raise_no_default("int", value)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/helpers/template/helpers.py", line 13, in raise_no_default
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: Template error: int got invalid input 'None' when rendering template '{{ state_attr('weather.pirateweather', 'temperature') | int }}' but no default was specified
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/helpers/template/__init__.py", line 611, in async_render_to_info
+    render_info._result = self.async_render(  # noqa: SLF001
+                          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+        variables, strict=strict, log_fn=log_fn, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/helpers/template/__init__.py", line 496, in async_render
+    raise TemplateError(err) from err
+homeassistant.exceptions.TemplateError: ValueError: Template error: int got invalid input 'None' when rendering template '{{ state_attr('weather.pirateweather', 'temperature') | int }}' but no default was specified
+2025-11-12 16:46:53.751 ERROR (MainThread) [homeassistant.components.template.template_entity] TemplateError('ValueError: Template error: int got invalid input 'None' when rendering template '{{ state_attr('weather.pirateweather', 'temperature') | int }}' but no default was specified') while processing template 'Template<template=({{ state_attr('weather.pirateweather', 'temperature') | int }}) renders=4>' for attribute '_attr_native_value' in entity 'sensor.outside_temperature'
+2025-11-12 16:46:54.340 ERROR (MainThread) [homeassistant.helpers.template] Template variable error: 'dict object' has no attribute 'entity_id' when rendering '{{ state_attr(trigger.entity_id,'user_id') == 'c04bc876fa7d454084bdfdf8a153a476' }}'
+2025-11-12 16:46:54.341 WARNING (MainThread) [homeassistant.helpers.script] Error in 'choose[0]' evaluation: In 'template' condition: UndefinedError: 'dict object' has no attribute 'entity_id'
+2025-11-12 16:46:54.341 ERROR (MainThread) [homeassistant.helpers.template] Template variable error: 'dict object' has no attribute 'entity_id' when rendering '{{ state_attr(trigger.entity_id,'user_id') == 'fe6a249661664e96a19486145703ad8c' }}'
+2025-11-12 16:46:54.341 WARNING (MainThread) [homeassistant.helpers.script] Error in 'choose[0]' evaluation: In 'template' condition: UndefinedError: 'dict object' has no attribute 'entity_id'
+2025-11-12 16:46:54.341 ERROR (MainThread) [homeassistant.helpers.template] Template variable error: 'dict object' has no attribute 'entity_id' when rendering '{{ state_attr(trigger.entity_id,'user_id') == '1022cf8e248e41f6a895c17756600a02' }}'
+2025-11-12 16:46:54.342 WARNING (MainThread) [homeassistant.helpers.script] Error in 'choose[0]' evaluation: In 'template' condition: UndefinedError: 'dict object' has no attribute 'entity_id'
+2025-11-12 16:46:54.348 WARNING (MainThread) [homeassistant.components.homeassistant.triggers.numeric_state] Error initializing 'Bad Weather Mode On' trigger: In 'numeric_state' condition: unknown entity sensor.pirateweather_cloud_coverage
+2025-11-12 16:46:54.348 WARNING (MainThread) [homeassistant.components.homeassistant.triggers.numeric_state] Error initializing 'Bad Weather Mode Off' trigger: In 'numeric_state' condition: unknown entity sensor.pirateweather_cloud_coverage
+2025-11-12 16:46:54.348 WARNING (MainThread) [homeassistant.components.homeassistant.triggers.numeric_state] Error initializing 'Bad Weather Mode Off' trigger: In 'numeric_state' condition: unknown entity sensor.tempest_illuminance
+2025-11-12 16:49:35.434 ERROR (MainThread) [homeassistant.helpers.template] Template variable error: 'dict object' has no attribute 'entity_id' when rendering '{{ state_attr(trigger.entity_id,'user_id') == 'c04bc876fa7d454084bdfdf8a153a476' }}'
+2025-11-12 16:49:35.434 WARNING (MainThread) [homeassistant.helpers.script] Error in 'choose[0]' evaluation: In 'template' condition: UndefinedError: 'dict object' has no attribute 'entity_id'
+2025-11-12 16:49:35.434 ERROR (MainThread) [homeassistant.helpers.template] Template variable error: 'dict object' has no attribute 'entity_id' when rendering '{{ state_attr(trigger.entity_id,'user_id') == 'fe6a249661664e96a19486145703ad8c' }}'
+2025-11-12 16:49:35.435 WARNING (MainThread) [homeassistant.helpers.script] Error in 'choose[0]' evaluation: In 'template' condition: UndefinedError: 'dict object' has no attribute 'entity_id'
+2025-11-12 16:49:35.435 ERROR (MainThread) [homeassistant.helpers.template] Template variable error: 'dict object' has no attribute 'entity_id' when rendering '{{ state_attr(trigger.entity_id,'user_id') == '1022cf8e248e41f6a895c17756600a02' }}'
+2025-11-12 16:49:35.435 WARNING (MainThread) [homeassistant.helpers.script] Error in 'choose[0]' evaluation: In 'template' condition: UndefinedError: 'dict object' has no attribute 'entity_id'
+2025-11-12 16:59:55.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-12 19:25:32.597 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-12 20:02:45.154 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-12 21:35:48.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-13 00:18:08.367 ERROR (MainThread) [custom_components.nws_alerts.coordinator] Error fetching NWS Alerts data: Cannot connect to host api.weather.gov:443 ssl:default [Timeout while contacting DNS servers]
+2025-11-13 00:31:54.985 ERROR (MainThread) [homeassistant.components.spotify] Error fetching 1237516216 Devices data: 
+2025-11-13 02:04:58.415 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-13 02:06:38.417 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-13 02:10:48.415 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-13 02:42:28.415 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-13 03:01:38.415 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-13 07:34:25.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-13 07:55:35.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-13 07:57:43.545 WARNING (MainThread) [homeassistant.components.automation] Error evaluating condition in 'Bad Weather Mode On':
+In 'condition' (item 4 of 4):
+  In 'or' (item 1 of 2):
+    In 'state':
+      In 'state' condition: unknown entity sensor.pirateweather_summary
+  In 'or' (item 2 of 2):
+    In 'numeric_state':
+      In 'numeric_state' condition: unknown entity sensor.pirateweather_alerts
+2025-11-13 10:02:31.484 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-13 10:04:32.273 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-13 10:06:40.927 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [139868338726176] Rick Fox from 192.168.1.161 (Home Assistant/2025.10.0 (io.robbie.HomeAssistant; build:2025.1443; iOS 18.7.1)): Disconnected: Received error message during command phase: No PONG received after 27.5 seconds
+2025-11-13 10:06:50.927 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [139868860653120] Rick Fox from 192.168.1.161 (Mozilla/5.0 (iPhone; CPU iPhone OS 18_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Home Assistant/2025.10.0 (io.robbie.HomeAssistant; build:2025.1443; iOS 18.7.1) Mobile/HomeAssistant, like Safari): Disconnected: Received error message during command phase: No PONG received after 27.5 seconds
+2025-11-13 10:58:15.415 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-13 11:05:25.415 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-13 12:28:01.927 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [139868378198112] Rick Fox from 172.58.183.85 (Home Assistant/2025.10.0 (io.robbie.HomeAssistant; build:2025.1443; iOS 18.7.1)): Disconnected: Received error message during command phase: No PONG received after 27.5 seconds
+2025-11-13 12:30:08.391 ERROR (MainThread) [aiohttp.server] Error handling request from 199.45.155.82
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_protocol.py", line 408, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "aiohttp/_http_parser.pyx", line 558, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadHttpMessage: 400, message:
+  Pause on PRI/Upgrade:
+
+    b''
+      ^
+2025-11-13 13:34:41.183 WARNING (MainThread) [homeassistant.components.automation] Error evaluating condition in 'Bad Weather Mode On':
+In 'condition' (item 4 of 4):
+  In 'or' (item 1 of 2):
+    In 'state':
+      In 'state' condition: unknown entity sensor.pirateweather_summary
+  In 'or' (item 2 of 2):
+    In 'numeric_state':
+      In 'numeric_state' condition: unknown entity sensor.pirateweather_alerts
+2025-11-13 13:42:34.631 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-13 14:15:35.069 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0x7f35ae879e80>,), {'max_record_size': 10}): Timeout error occurred accessing AlexaAPI: An exception of type CancelledError occurred. Arguments:
+()
+2025-11-13 14:37:35.002 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.office_occupied are missing or not currently available
+2025-11-13 15:05:56.001 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.office_occupied are missing or not currently available
+2025-11-13 15:42:27.004 ERROR (MainThread) [homeassistant.components.mobile_app.notify] Timeout sending notification to https://mobile-apps.home-assistant.io/api/sendPush/android/v1
+2025-11-13 16:48:35.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-13 17:43:45.799 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-13 17:43:53.613 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-13 17:45:52.688 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-13 18:13:15.417 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-13 20:35:45.415 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-13 20:44:35.342 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device
+2025-11-13 20:50:25.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-13 22:24:35.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-14 00:21:06.107 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0x7f35ae879e80>,), {'max_record_size': 10}): Timeout error occurred accessing AlexaAPI: An exception of type CancelledError occurred. Arguments:
+()
+2025-11-14 01:47:04.986 ERROR (MainThread) [homeassistant.components.spotify] Error fetching 1237516216 Devices data: 
+2025-11-14 04:36:07.640 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error requesting spotify data: Cannot connect to host api.spotify.com:443 ssl:default [Network unreachable]
+2025-11-14 05:33:18.415 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-14 06:52:29.415 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-14 06:53:39.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-14 07:35:05.368 WARNING (MainThread) [homeassistant.components.automation] Error evaluating condition in 'Bad Weather Mode On':
+In 'condition' (item 4 of 4):
+  In 'or' (item 1 of 2):
+    In 'state':
+      In 'state' condition: unknown entity sensor.pirateweather_summary
+  In 'or' (item 2 of 2):
+    In 'numeric_state':
+      In 'numeric_state' condition: unknown entity sensor.pirateweather_alerts
+2025-11-14 07:35:15.367 ERROR (MainThread) [homeassistant.components.mobile_app.notify] Timeout sending notification to https://mobile-apps.home-assistant.io/api/sendPushNotification
+2025-11-14 10:57:20.415 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-14 12:01:19.704 WARNING (MainThread) [homeassistant.components.automation] Error evaluating condition in 'Bad Weather Mode On':
+In 'condition' (item 4 of 4):
+  In 'or' (item 1 of 2):
+    In 'state':
+      In 'state' condition: unknown entity sensor.pirateweather_summary
+  In 'or' (item 2 of 2):
+    In 'numeric_state':
+      In 'numeric_state' condition: unknown entity sensor.pirateweather_alerts
+2025-11-14 13:46:47.926 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [139868378188352] Rick Fox from 172.59.196.141 (Home Assistant/2025.10.0 (io.robbie.HomeAssistant; build:2025.1443; iOS 18.7.1)): Disconnected: Received error message during command phase: No PONG received after 27.5 seconds
+2025-11-14 14:30:21.188 ERROR (MainThread) [aiohttp.server] Error handling request from 167.94.138.197
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_protocol.py", line 408, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "aiohttp/_http_parser.pyx", line 558, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadHttpMessage: 400, message:
+  Pause on PRI/Upgrade:
+
+    b''
+      ^
+2025-11-14 14:59:41.364 WARNING (MainThread) [homeassistant.components.automation] Error evaluating condition in 'Bad Weather Mode On':
+In 'condition' (item 4 of 4):
+  In 'or' (item 1 of 2):
+    In 'state':
+      In 'state' condition: unknown entity sensor.pirateweather_summary
+  In 'or' (item 2 of 2):
+    In 'numeric_state':
+      In 'numeric_state' condition: unknown entity sensor.pirateweather_alerts
+2025-11-14 15:11:19.444 WARNING (MainThread) [homeassistant.components.automation] Error evaluating condition in 'Bad Weather Mode On':
+In 'condition' (item 4 of 4):
+  In 'or' (item 1 of 2):
+    In 'state':
+      In 'state' condition: unknown entity sensor.pirateweather_summary
+  In 'or' (item 2 of 2):
+    In 'numeric_state':
+      In 'numeric_state' condition: unknown entity sensor.pirateweather_alerts
+2025-11-14 15:12:23.206 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-14 15:20:32.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-14 16:00:12.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-14 17:32:53.865 WARNING (MainThread) [custom_components.alarmo.alarm_control_panel] Cannot transition from state arming to state armed_away, there are open sensors
+2025-11-14 17:43:51.370 WARNING (SyncWorker_11) [custom_components.alarmo.alarm_control_panel] Cannot go to state disarmed from state disarmed.
+2025-11-14 17:44:25.817 ERROR (MainThread) [aiohttp.server] Error handling request from 172.59.194.46
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_protocol.py", line 510, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_app.py", line 569, in _handle
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_middlewares.py", line 117, in impl
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/security_filter.py", line 92, in security_filter_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/forwarded.py", line 83, in forwarded_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/request_context.py", line 26, in request_context_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/ban.py", line 86, in ban_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/auth.py", line 242, in auth_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/headers.py", line 41, in headers_middleware
+    response = await handler(request)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/helpers/http.py", line 73, in handle
+    result = await handler(request, **request.match_info)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 835, in get
+    return await self.handle(request, camera)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 853, in handle
+    image = await _async_get_image(
+            ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 204, in _async_get_image
+    else await camera.async_camera_image(width=width, height=height)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 603, in async_camera_image
+    return await self.hass.async_add_executor_job(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        partial(self.camera_image, width=width, height=height)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/src/homeassistant/homeassistant/components/local_file/camera.py", line 70, in camera_image
+    with open(self._file_path, "rb") as file:
+         ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/util/loop.py", line 201, in protected_loop_func
+    return func(*args, **kwargs)
+IsADirectoryError: [Errno 21] Is a directory: '.'
+2025-11-14 17:55:22.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-14 18:15:33.493 WARNING (MainThread) [custom_components.alarmo.alarm_control_panel] Cannot transition from state arming to state armed_away, there are open sensors
+2025-11-14 21:38:07.742 WARNING (SyncWorker_16) [custom_components.alarmo.alarm_control_panel] Cannot go to state disarmed from state disarmed.
+2025-11-14 21:41:56.105 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-15 00:13:33.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-15 00:44:48.143 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0x7f35ae879e80>,), {'max_record_size': 10}): Timeout error occurred accessing AlexaAPI: An exception of type CancelledError occurred. Arguments:
+()
+2025-11-15 02:24:13.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-15 02:42:53.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-15 02:59:03.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-15 05:41:13.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-15 06:55:24.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-15 07:16:59.532 ERROR (MainThread) [homeassistant.components.websocket_api.http.connection] [139868168052768] from 192.168.1.164 (Home Assistant/2025.10.0 (io.robbie.HomeAssistant; build:2025.1443; iPadOS 18.6.2)): Unexpected error inside websocket API
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/components/websocket_api/http.py", line 351, in async_handle
+    connection = await self._async_handle_auth_phase(auth, send_bytes_text)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/websocket_api/http.py", line 389, in _async_handle_auth_phase
+    await send_bytes_text(AUTH_REQUIRED_MESSAGE)
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/_websocket/writer.py", line 126, in send_frame
+    raise ClientConnectionResetError("Cannot write to closing transport")
+aiohttp.client_exceptions.ClientConnectionResetError: Cannot write to closing transport
+2025-11-15 07:55:11.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-15 10:33:59.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-15 10:39:09.417 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-15 11:32:11.380 WARNING (MainThread) [homeassistant.components.automation] Error evaluating condition in 'Bad Weather Mode On':
+In 'condition' (item 4 of 4):
+  In 'or' (item 1 of 2):
+    In 'state':
+      In 'state' condition: unknown entity sensor.pirateweather_summary
+  In 'or' (item 2 of 2):
+    In 'numeric_state':
+      In 'numeric_state' condition: unknown entity sensor.pirateweather_alerts
+2025-11-15 11:32:53.423 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-15 17:25:13.287 ERROR (MainThread) [aiohttp.server] Error handling request from 66.132.153.128
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_protocol.py", line 408, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "aiohttp/_http_parser.pyx", line 558, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadHttpMessage: 400, message:
+  Pause on PRI/Upgrade:
+
+    b''
+      ^
+2025-11-15 17:42:37.092 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-15 17:42:47.507 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-15 17:43:34.009 ERROR (MainThread) [homeassistant.components.mobile_app.notify] Timeout sending notification to https://mobile-apps.home-assistant.io/api/sendPushNotification
+2025-11-15 18:04:26.790 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-15 19:16:29.147 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-15 20:55:49.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-15 21:11:05.343 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device
+2025-11-15 22:58:23.417 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-16 07:51:03.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-16 09:07:02.125 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-16 09:23:43.415 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-16 10:32:29.860 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-16 10:35:59.439 ERROR (MainThread) [homeassistant.components.mobile_app.notify] Timeout sending notification to https://mobile-apps.home-assistant.io/api/sendPushNotification
+2025-11-16 10:54:30.926 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [139868032104576] Tracy Fox from 192.168.1.51 (Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Home Assistant/2025.10.0 (io.robbie.HomeAssistant; build:2025.1443; iOS 26.1.0) Mobile/HomeAssistant, like Safari): Disconnected: Received error message during command phase: No PONG received after 27.5 seconds
+2025-11-16 12:16:28.729 WARNING (MainThread) [homeassistant.components.automation] Error evaluating condition in 'Bad Weather Mode On':
+In 'condition' (item 4 of 4):
+  In 'or' (item 1 of 2):
+    In 'state':
+      In 'state' condition: unknown entity sensor.pirateweather_summary
+  In 'or' (item 2 of 2):
+    In 'numeric_state':
+      In 'numeric_state' condition: unknown entity sensor.pirateweather_alerts
+2025-11-16 13:34:56.927 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [139868129284384] Tracy Fox from 172.58.183.223 (Home Assistant/2025.10.0 (io.robbie.HomeAssistant; build:2025.1443; iOS 26.1.0)): Disconnected: Received error message during command phase: No PONG received after 27.5 seconds
+2025-11-16 13:38:17.075 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0x7f35ae879e80>,), {'max_record_size': 10}): Timeout error occurred accessing AlexaAPI: An exception of type CancelledError occurred. Arguments:
+()
+2025-11-16 18:02:27.540 ERROR (MainThread) [aiohttp.server] Error handling request from 66.132.153.114
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_protocol.py", line 408, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "aiohttp/_http_parser.pyx", line 558, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadHttpMessage: 400, message:
+  Pause on PRI/Upgrade:
+
+    b''
+      ^
+2025-11-16 18:25:18.963 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-16 18:42:39.818 ERROR (MainThread) [aiohttp.server] Error handling request from 199.45.154.153
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_protocol.py", line 408, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "aiohttp/_http_parser.pyx", line 558, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadHttpMessage: 400, message:
+  Pause on PRI/Upgrade:
+
+    b''
+      ^
+2025-11-16 19:45:59.897 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-16 20:35:44.057 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-16 20:46:29.894 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-16 20:51:49.030 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-17 00:30:56.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-17 01:28:53.929 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-17 01:36:07.417 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-17 05:30:56.937 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-17 07:40:02.372 WARNING (MainThread) [homeassistant.components.automation] Error evaluating condition in 'Bad Weather Mode On':
+In 'condition' (item 4 of 4):
+  In 'or' (item 1 of 2):
+    In 'state':
+      In 'state' condition: unknown entity sensor.pirateweather_summary
+  In 'or' (item 2 of 2):
+    In 'numeric_state':
+      In 'numeric_state' condition: unknown entity sensor.pirateweather_alerts
+2025-11-17 08:56:21.927 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [139868032095136] Rick Fox from 192.168.1.171 (Home Assistant/2025.10.0 (io.robbie.HomeAssistant; build:2025.1443; iOS 18.7.1)): Disconnected: Received error message during command phase: No PONG received after 27.5 seconds
+2025-11-17 08:56:46.927 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [139868124978912] Rick Fox from 192.168.1.171 (Mozilla/5.0 (iPhone; CPU iPhone OS 18_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Home Assistant/2025.10.0 (io.robbie.HomeAssistant; build:2025.1443; iOS 18.7.1) Mobile/HomeAssistant, like Safari): Disconnected: Received error message during command phase: No PONG received after 27.5 seconds
+2025-11-17 09:22:54.941 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-17 09:57:23.353 WARNING (MainThread) [homeassistant.components.automation] Error evaluating condition in 'Bad Weather Mode On':
+In 'condition' (item 4 of 4):
+  In 'or' (item 1 of 2):
+    In 'state':
+      In 'state' condition: unknown entity sensor.pirateweather_summary
+  In 'or' (item 2 of 2):
+    In 'numeric_state':
+      In 'numeric_state' condition: unknown entity sensor.pirateweather_alerts
+2025-11-17 10:33:30.946 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-17 10:46:52.539 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-17 11:19:23.403 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-17 11:34:02.353 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-17 12:01:03.801 WARNING (MainThread) [homeassistant.components.automation] Error evaluating condition in 'Bad Weather Mode On':
+In 'condition' (item 4 of 4):
+  In 'or' (item 1 of 2):
+    In 'state':
+      In 'state' condition: unknown entity sensor.pirateweather_summary
+  In 'or' (item 2 of 2):
+    In 'numeric_state':
+      In 'numeric_state' condition: unknown entity sensor.pirateweather_alerts
+2025-11-17 13:05:03.422 WARNING (MainThread) [homeassistant.components.automation] Error evaluating condition in 'Bad Weather Mode On':
+In 'condition' (item 4 of 4):
+  In 'or' (item 1 of 2):
+    In 'state':
+      In 'state' condition: unknown entity sensor.pirateweather_summary
+  In 'or' (item 2 of 2):
+    In 'numeric_state':
+      In 'numeric_state' condition: unknown entity sensor.pirateweather_alerts
+2025-11-17 15:05:48.912 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-17 15:24:54.336 WARNING (MainThread) [homeassistant.components.automation] Error evaluating condition in 'Bad Weather Mode On':
+In 'condition' (item 4 of 4):
+  In 'or' (item 1 of 2):
+    In 'state':
+      In 'state' condition: unknown entity sensor.pirateweather_summary
+  In 'or' (item 2 of 2):
+    In 'numeric_state':
+      In 'numeric_state' condition: unknown entity sensor.pirateweather_alerts
+2025-11-17 15:26:48.434 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-17 15:37:28.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-17 17:41:34.836 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-17 19:51:24.922 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-17 20:11:33.920 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-17 20:21:09.415 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-17 20:36:25.450 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-17 20:38:36.500 ERROR (MainThread) [aiohttp.server] Error handling request from 167.94.138.119
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_protocol.py", line 408, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "aiohttp/_http_parser.pyx", line 558, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadHttpMessage: 400, message:
+  Pause on PRI/Upgrade:
+
+    b''
+      ^
+2025-11-17 21:01:58.963 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-17 21:05:29.926 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [139868032178016] Rick Fox from 192.168.1.179 (Home Assistant/2025.10.0 (io.robbie.HomeAssistant; build:2025.1443; iOS 18.7.1)): Disconnected: Received error message during command phase: No PONG received after 27.5 seconds
+2025-11-17 21:22:09.365 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-17 21:42:18.902 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-17 22:12:32.869 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-17 22:24:01.258 ERROR (MainThread) [aiohttp.server] Error handling request from 66.132.153.136
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_protocol.py", line 408, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "aiohttp/_http_parser.pyx", line 558, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadHttpMessage: 400, message:
+  Pause on PRI/Upgrade:
+
+    b''
+      ^
+2025-11-17 22:42:47.935 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-18 00:13:33.885 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-18 01:11:23.256 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-18 07:47:14.987 ERROR (MainThread) [homeassistant.components.spotify] Error fetching 1237516216 Devices data: 
+2025-11-18 07:56:37.490 WARNING (MainThread) [homeassistant.components.automation] Error evaluating condition in 'Bad Weather Mode On':
+In 'condition' (item 4 of 4):
+  In 'or' (item 1 of 2):
+    In 'state':
+      In 'state' condition: unknown entity sensor.pirateweather_summary
+  In 'or' (item 2 of 2):
+    In 'numeric_state':
+      In 'numeric_state' condition: unknown entity sensor.pirateweather_alerts
+2025-11-18 08:13:29.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-18 08:18:11.870 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-18 08:48:26.929 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-18 09:03:11.201 ERROR (MainThread) [custom_components.nws_alerts.coordinator] Problem updating NWS data: (503) - <StreamReader 282 bytes eof>
+2025-11-18 09:08:36.873 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-18 09:16:17.002 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.office_occupied are missing or not currently available
+2025-11-18 09:52:35.926 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [139868123043040] Rick Fox from 192.168.1.186 (Home Assistant/2025.10.0 (io.robbie.HomeAssistant; build:2025.1443; iOS 18.7.1)): Disconnected: Received error message during command phase: No PONG received after 27.5 seconds
+2025-11-18 09:53:06.926 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [139868113868640] Rick Fox from 192.168.1.186 (Mozilla/5.0 (iPhone; CPU iPhone OS 18_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Home Assistant/2025.10.0 (io.robbie.HomeAssistant; build:2025.1443; iOS 18.7.1) Mobile/HomeAssistant, like Safari): Disconnected: Received error message during command phase: No PONG received after 27.5 seconds
+2025-11-18 10:15:02.689 WARNING (MainThread) [homeassistant.components.automation] Error evaluating condition in 'Bad Weather Mode On':
+In 'condition' (item 4 of 4):
+  In 'or' (item 1 of 2):
+    In 'state':
+      In 'state' condition: unknown entity sensor.pirateweather_summary
+  In 'or' (item 2 of 2):
+    In 'numeric_state':
+      In 'numeric_state' condition: unknown entity sensor.pirateweather_alerts
+2025-11-18 10:17:17.241 ERROR (MainThread) [custom_components.nws_alerts.coordinator] Problem updating NWS data: (504) - <StreamReader 494 bytes eof>
+2025-11-18 10:59:32.868 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-18 11:05:31.001 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.office_occupied are missing or not currently available
+2025-11-18 11:16:20.002 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.office_occupied are missing or not currently available
+2025-11-18 11:18:28.003 ERROR (MainThread) [homeassistant.components.mobile_app.notify] Timeout sending notification to https://mobile-apps.home-assistant.io/api/sendPush/android/v1
+2025-11-18 11:19:41.950 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-18 11:49:56.909 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-18 12:11:05.001 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.office_occupied are missing or not currently available
+2025-11-18 12:18:34.002 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.office_occupied are missing or not currently available
+2025-11-18 12:30:16.370 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-18 12:50:25.895 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-18 12:56:23.452 ERROR (MainThread) [homeassistant.components.mobile_app.webhook] Error when calling service during mobile_app webhook (device name: Rick’s iPhone): extra keys not allowed @ data['']
+2025-11-18 12:56:23.453 ERROR (MainThread) [homeassistant.components.webhook] Error processing webhook 32bd9068c675b68822f4f6d4d4c46f30a7b3fced646c5d95340e89659613b54b
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/components/mobile_app/webhook.py", line 283, in webhook_call_service
+    await hass.services.async_call(
+    ...<5 lines>...
+    )
+  File "/usr/src/homeassistant/homeassistant/core.py", line 2800, in async_call
+    processed_data: dict[str, Any] = handler.schema(service_data)
+                                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/validators.py", line 259, in __call__
+    return self._exec((Schema(val) for val in self.validators), v)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/validators.py", line 386, in _exec
+    raise e if self.msg is None else AllInvalid(self.msg, path=path)
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/validators.py", line 382, in _exec
+    v = func(v)
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/schema_builder.py", line 205, in __call__
+    return self._compiled([], data)
+           ~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/validators.py", line 256, in _run
+    return self._exec(self._compiled, value, path)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/validators.py", line 386, in _exec
+    raise e if self.msg is None else AllInvalid(self.msg, path=path)
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/validators.py", line 384, in _exec
+    v = func(path, v)
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/schema_builder.py", line 779, in validate_callable
+    return schema(data)
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/schema_builder.py", line 205, in __call__
+    return self._compiled([], data)
+           ~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/schema_builder.py", line 549, in validate_dict
+    return base_validate(path, data.items(), out)
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/schema_builder.py", line 382, in validate_mapping
+    raise er.MultipleInvalid(errors)
+voluptuous.error.MultipleInvalid: extra keys not allowed @ data['']
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/components/webhook/__init__.py", line 194, in async_handle_webhook
+    response: Response | None = await webhook["handler"](hass, webhook_id, request)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/mobile_app/webhook.py", line 265, in handle_webhook
+    return await asyncio.shield(
+           ^^^^^^^^^^^^^^^^^^^^^
+        WEBHOOK_COMMANDS[webhook_type](hass, config_entry, webhook_payload)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/components/mobile_app/webhook.py", line 175, in validate_and_run
+    return await func(hass, config_entry, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/mobile_app/webhook.py", line 299, in webhook_call_service
+    raise HTTPBadRequest from ex
+aiohttp.web_exceptions.HTTPBadRequest: Bad Request
+2025-11-18 12:56:23.752 ERROR (MainThread) [homeassistant.components.mobile_app.webhook] Error when calling service during mobile_app webhook (device name: Rick’s iPhone): extra keys not allowed @ data['']
+2025-11-18 12:56:23.753 ERROR (MainThread) [homeassistant.components.webhook] Error processing webhook 32bd9068c675b68822f4f6d4d4c46f30a7b3fced646c5d95340e89659613b54b
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/components/mobile_app/webhook.py", line 283, in webhook_call_service
+    await hass.services.async_call(
+    ...<5 lines>...
+    )
+  File "/usr/src/homeassistant/homeassistant/core.py", line 2800, in async_call
+    processed_data: dict[str, Any] = handler.schema(service_data)
+                                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/validators.py", line 259, in __call__
+    return self._exec((Schema(val) for val in self.validators), v)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/validators.py", line 386, in _exec
+    raise e if self.msg is None else AllInvalid(self.msg, path=path)
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/validators.py", line 382, in _exec
+    v = func(v)
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/schema_builder.py", line 205, in __call__
+    return self._compiled([], data)
+           ~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/validators.py", line 256, in _run
+    return self._exec(self._compiled, value, path)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/validators.py", line 386, in _exec
+    raise e if self.msg is None else AllInvalid(self.msg, path=path)
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/validators.py", line 384, in _exec
+    v = func(path, v)
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/schema_builder.py", line 779, in validate_callable
+    return schema(data)
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/schema_builder.py", line 205, in __call__
+    return self._compiled([], data)
+           ~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/schema_builder.py", line 549, in validate_dict
+    return base_validate(path, data.items(), out)
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/schema_builder.py", line 382, in validate_mapping
+    raise er.MultipleInvalid(errors)
+voluptuous.error.MultipleInvalid: extra keys not allowed @ data['']
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/components/webhook/__init__.py", line 194, in async_handle_webhook
+    response: Response | None = await webhook["handler"](hass, webhook_id, request)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/mobile_app/webhook.py", line 265, in handle_webhook
+    return await asyncio.shield(
+           ^^^^^^^^^^^^^^^^^^^^^
+        WEBHOOK_COMMANDS[webhook_type](hass, config_entry, webhook_payload)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/components/mobile_app/webhook.py", line 175, in validate_and_run
+    return await func(hass, config_entry, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/mobile_app/webhook.py", line 299, in webhook_call_service
+    raise HTTPBadRequest from ex
+aiohttp.web_exceptions.HTTPBadRequest: Bad Request
+2025-11-18 12:56:39.338 ERROR (MainThread) [homeassistant.components.mobile_app.webhook] Error when calling service during mobile_app webhook (device name: Rick’s iPhone): extra keys not allowed @ data['']
+2025-11-18 12:56:39.338 ERROR (MainThread) [homeassistant.components.webhook] Error processing webhook 32bd9068c675b68822f4f6d4d4c46f30a7b3fced646c5d95340e89659613b54b
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/components/mobile_app/webhook.py", line 283, in webhook_call_service
+    await hass.services.async_call(
+    ...<5 lines>...
+    )
+  File "/usr/src/homeassistant/homeassistant/core.py", line 2800, in async_call
+    processed_data: dict[str, Any] = handler.schema(service_data)
+                                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/validators.py", line 259, in __call__
+    return self._exec((Schema(val) for val in self.validators), v)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/validators.py", line 386, in _exec
+    raise e if self.msg is None else AllInvalid(self.msg, path=path)
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/validators.py", line 382, in _exec
+    v = func(v)
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/schema_builder.py", line 205, in __call__
+    return self._compiled([], data)
+           ~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/validators.py", line 256, in _run
+    return self._exec(self._compiled, value, path)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/validators.py", line 386, in _exec
+    raise e if self.msg is None else AllInvalid(self.msg, path=path)
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/validators.py", line 384, in _exec
+    v = func(path, v)
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/schema_builder.py", line 779, in validate_callable
+    return schema(data)
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/schema_builder.py", line 205, in __call__
+    return self._compiled([], data)
+           ~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/schema_builder.py", line 549, in validate_dict
+    return base_validate(path, data.items(), out)
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/schema_builder.py", line 382, in validate_mapping
+    raise er.MultipleInvalid(errors)
+voluptuous.error.MultipleInvalid: extra keys not allowed @ data['']
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/components/webhook/__init__.py", line 194, in async_handle_webhook
+    response: Response | None = await webhook["handler"](hass, webhook_id, request)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/mobile_app/webhook.py", line 265, in handle_webhook
+    return await asyncio.shield(
+           ^^^^^^^^^^^^^^^^^^^^^
+        WEBHOOK_COMMANDS[webhook_type](hass, config_entry, webhook_payload)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/components/mobile_app/webhook.py", line 175, in validate_and_run
+    return await func(hass, config_entry, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/mobile_app/webhook.py", line 299, in webhook_call_service
+    raise HTTPBadRequest from ex
+aiohttp.web_exceptions.HTTPBadRequest: Bad Request
+2025-11-18 12:56:39.403 ERROR (MainThread) [homeassistant.components.mobile_app.webhook] Error when calling service during mobile_app webhook (device name: Rick’s iPhone): extra keys not allowed @ data['']
+2025-11-18 12:56:39.403 ERROR (MainThread) [homeassistant.components.webhook] Error processing webhook 32bd9068c675b68822f4f6d4d4c46f30a7b3fced646c5d95340e89659613b54b
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/components/mobile_app/webhook.py", line 283, in webhook_call_service
+    await hass.services.async_call(
+    ...<5 lines>...
+    )
+  File "/usr/src/homeassistant/homeassistant/core.py", line 2800, in async_call
+    processed_data: dict[str, Any] = handler.schema(service_data)
+                                     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/validators.py", line 259, in __call__
+    return self._exec((Schema(val) for val in self.validators), v)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/validators.py", line 386, in _exec
+    raise e if self.msg is None else AllInvalid(self.msg, path=path)
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/validators.py", line 382, in _exec
+    v = func(v)
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/schema_builder.py", line 205, in __call__
+    return self._compiled([], data)
+           ~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/validators.py", line 256, in _run
+    return self._exec(self._compiled, value, path)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/validators.py", line 386, in _exec
+    raise e if self.msg is None else AllInvalid(self.msg, path=path)
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/validators.py", line 384, in _exec
+    v = func(path, v)
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/schema_builder.py", line 779, in validate_callable
+    return schema(data)
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/schema_builder.py", line 205, in __call__
+    return self._compiled([], data)
+           ~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/schema_builder.py", line 549, in validate_dict
+    return base_validate(path, data.items(), out)
+  File "/usr/local/lib/python3.13/site-packages/voluptuous/schema_builder.py", line 382, in validate_mapping
+    raise er.MultipleInvalid(errors)
+voluptuous.error.MultipleInvalid: extra keys not allowed @ data['']
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/components/webhook/__init__.py", line 194, in async_handle_webhook
+    response: Response | None = await webhook["handler"](hass, webhook_id, request)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/mobile_app/webhook.py", line 265, in handle_webhook
+    return await asyncio.shield(
+           ^^^^^^^^^^^^^^^^^^^^^
+        WEBHOOK_COMMANDS[webhook_type](hass, config_entry, webhook_payload)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/components/mobile_app/webhook.py", line 175, in validate_and_run
+    return await func(hass, config_entry, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/mobile_app/webhook.py", line 299, in webhook_call_service
+    raise HTTPBadRequest from ex
+aiohttp.web_exceptions.HTTPBadRequest: Bad Request
+2025-11-18 12:59:45.003 ERROR (MainThread) [homeassistant.components.mobile_app.notify] Timeout sending notification to https://mobile-apps.home-assistant.io/api/sendPush/android/v1
+2025-11-18 13:02:46.002 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.office_occupied are missing or not currently available
+2025-11-18 13:10:52.717 ERROR (MainThread) [homeassistant.components.mobile_app.notify] Timeout sending notification to https://mobile-apps.home-assistant.io/api/sendPushNotification
+2025-11-18 13:11:47.002 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.office_occupied are missing or not currently available
+2025-11-18 13:20:39.958 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-18 13:46:03.644 WARNING (MainThread) [homeassistant.components.automation] Error evaluating condition in 'Bad Weather Mode On':
+In 'condition' (item 4 of 4):
+  In 'or' (item 1 of 2):
+    In 'state':
+      In 'state' condition: unknown entity sensor.pirateweather_summary
+  In 'or' (item 2 of 2):
+    In 'numeric_state':
+      In 'numeric_state' condition: unknown entity sensor.pirateweather_alerts
+2025-11-18 13:46:52.970 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-18 13:56:30.002 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.office_occupied are missing or not currently available
+2025-11-18 15:12:40.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-18 15:13:56.002 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.office_occupied are missing or not currently available
+2025-11-18 15:30:47.869 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-18 16:54:01.418 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-18 16:57:52.928 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [139868169068416] Rick Fox from 172.59.195.205 (Home Assistant/2025.10.0 (io.robbie.HomeAssistant; build:2025.1443; iOS 18.7.1)): Disconnected: Received error message during command phase: No PONG received after 27.5 seconds
+2025-11-18 17:54:50.968 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-18 17:55:46.955 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-18 18:17:10.002 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.office_occupied are missing or not currently available
+2025-11-18 18:19:42.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-18 23:07:59.569 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-18 23:09:30.981 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-18 23:10:35.926 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [139868378192192] Rick Fox from 172.59.195.125 (Home Assistant/2025.10.0 (io.robbie.HomeAssistant; build:2025.1443; iOS 18.7.1)): Disconnected: Received error message during command phase: No PONG received after 27.5 seconds
+2025-11-18 23:10:41.926 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [139868169070976] Rick Fox from 172.59.195.125 (Mozilla/5.0 (iPhone; CPU iPhone OS 18_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Home Assistant/2025.10.0 (io.robbie.HomeAssistant; build:2025.1443; iOS 18.7.1) Mobile/HomeAssistant, like Safari): Disconnected: Received error message during command phase: No PONG received after 27.5 seconds
+2025-11-18 23:17:04.401 ERROR (MainThread) [aiohttp.server] Error handling request from 206.168.34.32
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_protocol.py", line 408, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "aiohttp/_http_parser.pyx", line 558, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadHttpMessage: 400, message:
+  Pause on PRI/Upgrade:
+
+    b''
+      ^
+2025-11-19 02:52:35.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-19 04:08:01.507 ERROR (MainThread) [aiohttp.server] Error handling request from 162.142.125.112
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_protocol.py", line 408, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "aiohttp/_http_parser.pyx", line 558, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadHttpMessage: 400, message:
+  Pause on PRI/Upgrade:
+
+    b''
+      ^
+2025-11-19 04:19:47.415 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-19 04:39:08.056 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-19 04:40:57.258 ERROR (MainThread) [custom_components.nws_alerts.coordinator] Problem updating NWS data: (504) - <StreamReader 494 bytes eof>
+2025-11-19 05:29:32.852 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-19 05:46:12.001 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.office_occupied are missing or not currently available
+2025-11-19 07:58:05.409 WARNING (MainThread) [homeassistant.components.automation] Error evaluating condition in 'Bad Weather Mode On':
+In 'condition' (item 4 of 4):
+  In 'or' (item 1 of 2):
+    In 'state':
+      In 'state' condition: unknown entity sensor.pirateweather_summary
+  In 'or' (item 2 of 2):
+    In 'numeric_state':
+      In 'numeric_state' condition: unknown entity sensor.pirateweather_alerts
+2025-11-19 08:06:14.999 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-19 08:14:16.798 ERROR (MainThread) [aiohttp.server] Error handling request from 192.168.1.138
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_protocol.py", line 510, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_app.py", line 569, in _handle
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_middlewares.py", line 117, in impl
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/security_filter.py", line 92, in security_filter_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/forwarded.py", line 83, in forwarded_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/request_context.py", line 26, in request_context_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/ban.py", line 86, in ban_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/auth.py", line 242, in auth_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/headers.py", line 41, in headers_middleware
+    response = await handler(request)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/helpers/http.py", line 73, in handle
+    result = await handler(request, **request.match_info)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 835, in get
+    return await self.handle(request, camera)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 853, in handle
+    image = await _async_get_image(
+            ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 204, in _async_get_image
+    else await camera.async_camera_image(width=width, height=height)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 603, in async_camera_image
+    return await self.hass.async_add_executor_job(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        partial(self.camera_image, width=width, height=height)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/src/homeassistant/homeassistant/components/local_file/camera.py", line 70, in camera_image
+    with open(self._file_path, "rb") as file:
+         ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/util/loop.py", line 201, in protected_loop_func
+    return func(*args, **kwargs)
+IsADirectoryError: [Errno 21] Is a directory: '.'
+2025-11-19 08:14:22.448 ERROR (MainThread) [aiohttp.server] Error handling request from 192.168.1.138
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_protocol.py", line 510, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_app.py", line 569, in _handle
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_middlewares.py", line 117, in impl
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/security_filter.py", line 92, in security_filter_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/forwarded.py", line 83, in forwarded_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/request_context.py", line 26, in request_context_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/ban.py", line 86, in ban_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/auth.py", line 242, in auth_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/headers.py", line 41, in headers_middleware
+    response = await handler(request)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/helpers/http.py", line 73, in handle
+    result = await handler(request, **request.match_info)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 835, in get
+    return await self.handle(request, camera)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 853, in handle
+    image = await _async_get_image(
+            ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 204, in _async_get_image
+    else await camera.async_camera_image(width=width, height=height)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 603, in async_camera_image
+    return await self.hass.async_add_executor_job(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        partial(self.camera_image, width=width, height=height)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/src/homeassistant/homeassistant/components/local_file/camera.py", line 70, in camera_image
+    with open(self._file_path, "rb") as file:
+         ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/util/loop.py", line 201, in protected_loop_func
+    return func(*args, **kwargs)
+IsADirectoryError: [Errno 21] Is a directory: '.'
+2025-11-19 09:33:55.236 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-19 09:34:14.796 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-19 09:35:06.904 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-19 09:36:06.926 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [139868032097376] Rick Fox from 192.168.1.120 (Home Assistant/2025.10.0 (io.robbie.HomeAssistant; build:2025.1443; iOS 18.7.1)): Disconnected: Received error message during command phase: No PONG received after 27.5 seconds
+2025-11-19 09:36:24.927 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [139868032093056] Rick Fox from 192.168.1.120 (Mozilla/5.0 (iPhone; CPU iPhone OS 18_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Home Assistant/2025.10.0 (io.robbie.HomeAssistant; build:2025.1443; iOS 18.7.1) Mobile/HomeAssistant, like Safari): Disconnected: Received error message during command phase: No PONG received after 27.5 seconds
+2025-11-19 12:02:53.873 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-19 12:33:16.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-19 12:43:12.938 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-19 13:43:42.901 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-19 14:07:49.356 WARNING (MainThread) [homeassistant.components.automation] Error evaluating condition in 'Bad Weather Mode On':
+In 'condition' (item 4 of 4):
+  In 'or' (item 1 of 2):
+    In 'state':
+      In 'state' condition: unknown entity sensor.pirateweather_summary
+  In 'or' (item 2 of 2):
+    In 'numeric_state':
+      In 'numeric_state' condition: unknown entity sensor.pirateweather_alerts
+2025-11-19 14:14:47.926 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [139868010886016] Tracy Fox from 192.168.1.51 (Home Assistant/2025.10.0 (io.robbie.HomeAssistant; build:2025.1443; iOS 26.1.0)): Disconnected: Received error message during command phase: No PONG received after 27.5 seconds
+2025-11-19 14:15:34.927 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [139868011205376] Tracy Fox from 192.168.1.51 (Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Home Assistant/2025.10.0 (io.robbie.HomeAssistant; build:2025.1443; iOS 26.1.0) Mobile/HomeAssistant, like Safari): Disconnected: Received error message during command phase: No PONG received after 27.5 seconds
+2025-11-19 14:24:02.179 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-19 15:46:49.989 ERROR (MainThread) [aiohttp.server] Error handling request from 192.168.1.180
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_protocol.py", line 510, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_app.py", line 569, in _handle
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_middlewares.py", line 117, in impl
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/security_filter.py", line 92, in security_filter_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/forwarded.py", line 83, in forwarded_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/request_context.py", line 26, in request_context_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/ban.py", line 86, in ban_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/auth.py", line 242, in auth_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/headers.py", line 41, in headers_middleware
+    response = await handler(request)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/helpers/http.py", line 73, in handle
+    result = await handler(request, **request.match_info)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/decorators.py", line 83, in with_admin
+    return await func(self, request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/config/core.py", line 38, in post
+    res = await check_config.async_check_ha_config_file(request.app[KEY_HASS])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/helpers/check_config.py", line 166, in async_check_ha_config_file
+    await merge_packages_config(
+        hass, config, core_config.get(CONF_PACKAGES, {}), _pack_error
+    )
+  File "/usr/src/homeassistant/homeassistant/config.py", line 710, in merge_packages_config
+    integration = await async_get_integration_with_requirements(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        hass, domain
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/requirements.py", line 54, in async_get_integration_with_requirements
+    return await manager.async_get_integration_with_requirements(domain)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/requirements.py", line 170, in async_get_integration_with_requirements
+    await future
+  File "/usr/src/homeassistant/homeassistant/requirements.py", line 157, in async_get_integration_with_requirements
+    integration = await async_get_integration(self.hass, domain)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/loader.py", line 1355, in async_get_integration
+    raise int_or_exc
+ValueError: Invalid domain input.select
+2025-11-19 15:47:21.535 ERROR (MainThread) [homeassistant.components.websocket_api.http.connection] [139868011214656] Unexpected exception
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/components/websocket_api/commands.py", line 264, in handle_call_service
+    response = await hass.services.async_call(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/core.py", line 2835, in async_call
+    response_data = await coro
+                    ^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/core.py", line 2878, in _execute_service
+    return await target(service_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/helpers/service.py", line 961, in _async_admin_handler
+    return await task
+           ^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/input_select/__init__.py", line 168, in reload_service_handler
+    conf = await component.async_prepare_reload(skip_reset=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/helpers/entity_component.py", line 339, in async_prepare_reload
+    conf = await conf_util.async_hass_config_yaml(self.hass)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/config.py", line 248, in async_hass_config_yaml
+    await merge_packages_config(hass, config, core_config.get(CONF_PACKAGES, {}))
+  File "/usr/src/homeassistant/homeassistant/config.py", line 710, in merge_packages_config
+    integration = await async_get_integration_with_requirements(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        hass, domain
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/requirements.py", line 54, in async_get_integration_with_requirements
+    return await manager.async_get_integration_with_requirements(domain)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/requirements.py", line 170, in async_get_integration_with_requirements
+    await future
+  File "/usr/src/homeassistant/homeassistant/requirements.py", line 157, in async_get_integration_with_requirements
+    integration = await async_get_integration(self.hass, domain)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/loader.py", line 1355, in async_get_integration
+    raise int_or_exc
+ValueError: Invalid domain input.select
+2025-11-19 15:54:44.342 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-19 16:14:53.986 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-19 16:55:13.326 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-19 18:25:58.922 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-19 18:56:13.280 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-19 19:25:41.882 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-19 20:06:02.932 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-19 20:15:23.246 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-19 20:15:49.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-19 20:29:09.923 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.garage_open are missing or not currently available
+2025-11-19 20:46:21.955 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: object of type 'NoneType' has no len()
+2025-11-19 21:48:29.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-19 22:13:05.241 ERROR (MainThread) [custom_components.nws_alerts.coordinator] Problem updating NWS data: (504) - <StreamReader 494 bytes eof>
+2025-11-19 22:40:15.278 ERROR (MainThread) [custom_components.nws_alerts.coordinator] Problem updating NWS data: (504) - <StreamReader 494 bytes eof>
+2025-11-19 23:11:09.415 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-20 00:25:19.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-20 01:34:29.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-20 01:58:09.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-20 02:18:42.747 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities script.notification_pushover_message are missing or not currently available
+2025-11-20 03:31:33.390 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities script.notification_pushover_message are missing or not currently available
+2025-11-20 03:43:52.830 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities script.notification_pushover_message are missing or not currently available
+2025-11-20 04:08:54.546 ERROR (MainThread) [aiohttp.server] Error handling request from 206.168.34.115
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_protocol.py", line 408, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "aiohttp/_http_parser.pyx", line 558, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadHttpMessage: 400, message:
+  Pause on PRI/Upgrade:
+
+    b''
+      ^
+2025-11-20 04:27:34.359 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities script.notification_pushover_message are missing or not currently available
+2025-11-20 04:39:44.368 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities script.notification_pushover_message are missing or not currently available
+2025-11-20 05:03:20.547 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities script.notification_pushover_message are missing or not currently available
+2025-11-20 05:09:11.370 ERROR (MainThread) [aiohttp.server] Error handling request from 162.142.125.211
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_protocol.py", line 408, in data_received
+    messages, upgraded, tail = self._request_parser.feed_data(data)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "aiohttp/_http_parser.pyx", line 558, in aiohttp._http_parser.HttpParser.feed_data
+aiohttp.http_exceptions.BadHttpMessage: 400, message:
+  Pause on PRI/Upgrade:
+
+    b''
+      ^
+2025-11-20 05:10:33.904 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities script.notification_pushover_message are missing or not currently available
+2025-11-20 05:46:23.415 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-20 05:48:33.416 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-20 06:03:34.577 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error requesting spotify data: Cannot connect to host api.spotify.com:443 ssl:default [Timeout while contacting DNS servers]
+2025-11-20 06:20:43.895 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities script.notification_pushover_message are missing or not currently available
+2025-11-20 06:39:53.443 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities script.notification_pushover_message are missing or not currently available
+2025-11-20 06:41:53.453 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities script.notification_pushover_message are missing or not currently available
+2025-11-20 06:47:54.382 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities script.notification_pushover_message are missing or not currently available
+2025-11-20 06:51:56.002 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.office_occupied are missing or not currently available
+2025-11-20 06:52:04.369 ERROR (MainThread) [homeassistant.helpers.template] Template variable error: 'dict object' has no attribute 'entity_id' when rendering '{{ state_attr(trigger.entity_id,'user_id') == 'c04bc876fa7d454084bdfdf8a153a476' }}'
+2025-11-20 06:52:04.370 WARNING (MainThread) [homeassistant.helpers.script] Error in 'choose[0]' evaluation: In 'template' condition: UndefinedError: 'dict object' has no attribute 'entity_id'
+2025-11-20 06:52:04.370 ERROR (MainThread) [homeassistant.helpers.template] Template variable error: 'dict object' has no attribute 'entity_id' when rendering '{{ state_attr(trigger.entity_id,'user_id') == 'fe6a249661664e96a19486145703ad8c' }}'
+2025-11-20 06:52:04.370 WARNING (MainThread) [homeassistant.helpers.script] Error in 'choose[0]' evaluation: In 'template' condition: UndefinedError: 'dict object' has no attribute 'entity_id'
+2025-11-20 06:52:04.371 ERROR (MainThread) [homeassistant.helpers.template] Template variable error: 'dict object' has no attribute 'entity_id' when rendering '{{ state_attr(trigger.entity_id,'user_id') == '1022cf8e248e41f6a895c17756600a02' }}'
+2025-11-20 06:52:04.371 WARNING (MainThread) [homeassistant.helpers.script] Error in 'choose[0]' evaluation: In 'template' condition: UndefinedError: 'dict object' has no attribute 'entity_id'
+2025-11-20 06:52:04.785 WARNING (SyncWorker_14) [custom_components.alarmo.alarm_control_panel] Cannot go to state disarmed from state disarmed.
+2025-11-20 06:52:04.937 WARNING (MainThread) [homeassistant.components.template.trigger] Error evaluating 'template' trigger for 'Reset Garbage Day': ValueError: Template error: int got invalid input 'unknown' when rendering template '{{ 6 == states('sensor.days_till_garbage_pickup') | int }}' but no default was specified
+2025-11-20 06:52:04.943 ERROR (MainThread) [homeassistant.helpers.event] Error while processing template: Template<template=({{ state_attr('weather.pirateweather', 'temperature') | int }}) renders=2>
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/helpers/template/__init__.py", line 494, in async_render
+    render_result = render_with_context(self.template, compiled, **kwargs)
+  File "/usr/src/homeassistant/homeassistant/helpers/template/context.py", line 45, in render_with_context
+    return template.render(**kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/local/lib/python3.13/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "<template>", line 1, in top-level template code
+  File "/usr/src/homeassistant/homeassistant/helpers/template/__init__.py", line 2084, in forgiving_int_filter
+    raise_no_default("int", value)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/helpers/template/helpers.py", line 13, in raise_no_default
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: Template error: int got invalid input 'None' when rendering template '{{ state_attr('weather.pirateweather', 'temperature') | int }}' but no default was specified
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/helpers/template/__init__.py", line 611, in async_render_to_info
+    render_info._result = self.async_render(  # noqa: SLF001
+                          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+        variables, strict=strict, log_fn=log_fn, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/helpers/template/__init__.py", line 496, in async_render
+    raise TemplateError(err) from err
+homeassistant.exceptions.TemplateError: ValueError: Template error: int got invalid input 'None' when rendering template '{{ state_attr('weather.pirateweather', 'temperature') | int }}' but no default was specified
+2025-11-20 06:52:04.944 ERROR (MainThread) [homeassistant.components.template.template_entity] TemplateError('ValueError: Template error: int got invalid input 'None' when rendering template '{{ state_attr('weather.pirateweather', 'temperature') | int }}' but no default was specified') while processing template 'Template<template=({{ state_attr('weather.pirateweather', 'temperature') | int }}) renders=4>' for attribute '_attr_native_value' in entity 'sensor.outside_temperature'
+2025-11-20 06:53:16.525 ERROR (MainThread) [aiohttp.server] Error handling request from 192.168.1.134
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_protocol.py", line 510, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_app.py", line 569, in _handle
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_middlewares.py", line 117, in impl
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/security_filter.py", line 92, in security_filter_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/forwarded.py", line 83, in forwarded_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/request_context.py", line 26, in request_context_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/ban.py", line 86, in ban_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/auth.py", line 242, in auth_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/headers.py", line 41, in headers_middleware
+    response = await handler(request)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/helpers/http.py", line 73, in handle
+    result = await handler(request, **request.match_info)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 835, in get
+    return await self.handle(request, camera)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 853, in handle
+    image = await _async_get_image(
+            ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 204, in _async_get_image
+    else await camera.async_camera_image(width=width, height=height)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 603, in async_camera_image
+    return await self.hass.async_add_executor_job(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        partial(self.camera_image, width=width, height=height)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/src/homeassistant/homeassistant/components/local_file/camera.py", line 70, in camera_image
+    with open(self._file_path, "rb") as file:
+         ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/util/loop.py", line 201, in protected_loop_func
+    return func(*args, **kwargs)
+IsADirectoryError: [Errno 21] Is a directory: '.'
+2025-11-20 06:53:26.560 ERROR (MainThread) [aiohttp.server] Error handling request from 192.168.1.134
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_protocol.py", line 510, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_app.py", line 569, in _handle
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_middlewares.py", line 117, in impl
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/security_filter.py", line 92, in security_filter_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/forwarded.py", line 83, in forwarded_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/request_context.py", line 26, in request_context_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/ban.py", line 86, in ban_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/auth.py", line 242, in auth_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/headers.py", line 41, in headers_middleware
+    response = await handler(request)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/helpers/http.py", line 73, in handle
+    result = await handler(request, **request.match_info)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 835, in get
+    return await self.handle(request, camera)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 853, in handle
+    image = await _async_get_image(
+            ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 204, in _async_get_image
+    else await camera.async_camera_image(width=width, height=height)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 603, in async_camera_image
+    return await self.hass.async_add_executor_job(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        partial(self.camera_image, width=width, height=height)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/src/homeassistant/homeassistant/components/local_file/camera.py", line 70, in camera_image
+    with open(self._file_path, "rb") as file:
+         ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/util/loop.py", line 201, in protected_loop_func
+    return func(*args, **kwargs)
+IsADirectoryError: [Errno 21] Is a directory: '.'
+2025-11-20 06:53:36.556 ERROR (MainThread) [aiohttp.server] Error handling request from 192.168.1.134
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_protocol.py", line 510, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_app.py", line 569, in _handle
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_middlewares.py", line 117, in impl
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/security_filter.py", line 92, in security_filter_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/forwarded.py", line 83, in forwarded_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/request_context.py", line 26, in request_context_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/ban.py", line 86, in ban_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/auth.py", line 242, in auth_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/headers.py", line 41, in headers_middleware
+    response = await handler(request)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/helpers/http.py", line 73, in handle
+    result = await handler(request, **request.match_info)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 835, in get
+    return await self.handle(request, camera)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 853, in handle
+    image = await _async_get_image(
+            ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 204, in _async_get_image
+    else await camera.async_camera_image(width=width, height=height)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 603, in async_camera_image
+    return await self.hass.async_add_executor_job(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        partial(self.camera_image, width=width, height=height)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/src/homeassistant/homeassistant/components/local_file/camera.py", line 70, in camera_image
+    with open(self._file_path, "rb") as file:
+         ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/util/loop.py", line 201, in protected_loop_func
+    return func(*args, **kwargs)
+IsADirectoryError: [Errno 21] Is a directory: '.'
+2025-11-20 06:53:46.560 ERROR (MainThread) [aiohttp.server] Error handling request from 192.168.1.134
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_protocol.py", line 510, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_app.py", line 569, in _handle
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_middlewares.py", line 117, in impl
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/security_filter.py", line 92, in security_filter_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/forwarded.py", line 83, in forwarded_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/request_context.py", line 26, in request_context_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/ban.py", line 86, in ban_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/auth.py", line 242, in auth_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/headers.py", line 41, in headers_middleware
+    response = await handler(request)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/helpers/http.py", line 73, in handle
+    result = await handler(request, **request.match_info)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 835, in get
+    return await self.handle(request, camera)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 853, in handle
+    image = await _async_get_image(
+            ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 204, in _async_get_image
+    else await camera.async_camera_image(width=width, height=height)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 603, in async_camera_image
+    return await self.hass.async_add_executor_job(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        partial(self.camera_image, width=width, height=height)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/src/homeassistant/homeassistant/components/local_file/camera.py", line 70, in camera_image
+    with open(self._file_path, "rb") as file:
+         ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/util/loop.py", line 201, in protected_loop_func
+    return func(*args, **kwargs)
+IsADirectoryError: [Errno 21] Is a directory: '.'
+2025-11-20 06:53:56.559 ERROR (MainThread) [aiohttp.server] Error handling request from 192.168.1.134
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_protocol.py", line 510, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_app.py", line 569, in _handle
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_middlewares.py", line 117, in impl
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/security_filter.py", line 92, in security_filter_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/forwarded.py", line 83, in forwarded_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/request_context.py", line 26, in request_context_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/ban.py", line 86, in ban_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/auth.py", line 242, in auth_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/headers.py", line 41, in headers_middleware
+    response = await handler(request)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/helpers/http.py", line 73, in handle
+    result = await handler(request, **request.match_info)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 835, in get
+    return await self.handle(request, camera)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 853, in handle
+    image = await _async_get_image(
+            ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 204, in _async_get_image
+    else await camera.async_camera_image(width=width, height=height)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 603, in async_camera_image
+    return await self.hass.async_add_executor_job(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        partial(self.camera_image, width=width, height=height)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/src/homeassistant/homeassistant/components/local_file/camera.py", line 70, in camera_image
+    with open(self._file_path, "rb") as file:
+         ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/util/loop.py", line 201, in protected_loop_func
+    return func(*args, **kwargs)
+IsADirectoryError: [Errno 21] Is a directory: '.'
+2025-11-20 06:54:06.562 ERROR (MainThread) [aiohttp.server] Error handling request from 192.168.1.134
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_protocol.py", line 510, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_app.py", line 569, in _handle
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_middlewares.py", line 117, in impl
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/security_filter.py", line 92, in security_filter_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/forwarded.py", line 83, in forwarded_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/request_context.py", line 26, in request_context_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/ban.py", line 86, in ban_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/auth.py", line 242, in auth_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/headers.py", line 41, in headers_middleware
+    response = await handler(request)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/helpers/http.py", line 73, in handle
+    result = await handler(request, **request.match_info)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 835, in get
+    return await self.handle(request, camera)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 853, in handle
+    image = await _async_get_image(
+            ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 204, in _async_get_image
+    else await camera.async_camera_image(width=width, height=height)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 603, in async_camera_image
+    return await self.hass.async_add_executor_job(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        partial(self.camera_image, width=width, height=height)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/src/homeassistant/homeassistant/components/local_file/camera.py", line 70, in camera_image
+    with open(self._file_path, "rb") as file:
+         ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/util/loop.py", line 201, in protected_loop_func
+    return func(*args, **kwargs)
+IsADirectoryError: [Errno 21] Is a directory: '.'
+2025-11-20 06:54:15.647 ERROR (MainThread) [aiohttp.server] Error handling request from 192.168.1.134
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_protocol.py", line 510, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_app.py", line 569, in _handle
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_middlewares.py", line 117, in impl
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/security_filter.py", line 92, in security_filter_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/forwarded.py", line 83, in forwarded_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/request_context.py", line 26, in request_context_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/ban.py", line 86, in ban_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/auth.py", line 242, in auth_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/headers.py", line 41, in headers_middleware
+    response = await handler(request)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/helpers/http.py", line 73, in handle
+    result = await handler(request, **request.match_info)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 835, in get
+    return await self.handle(request, camera)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 853, in handle
+    image = await _async_get_image(
+            ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 204, in _async_get_image
+    else await camera.async_camera_image(width=width, height=height)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/camera/__init__.py", line 603, in async_camera_image
+    return await self.hass.async_add_executor_job(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        partial(self.camera_image, width=width, height=height)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/src/homeassistant/homeassistant/components/local_file/camera.py", line 70, in camera_image
+    with open(self._file_path, "rb") as file:
+         ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/util/loop.py", line 201, in protected_loop_func
+    return func(*args, **kwargs)
+IsADirectoryError: [Errno 21] Is a directory: '.'
+2025-11-20 06:57:45.417 ERROR (MainThread) [homeassistant.components.spotify.coordinator] Error fetching spotify data: Error communicating with Spotify API
+2025-11-20 07:00:16.002 WARNING (MainThread) [homeassistant.helpers.service] Referenced entities input_boolean.office_occupied are missing or not currently available
+2025-11-20 07:00:43.002 ERROR (MainThread) [homeassistant.components.mobile_app.notify] Timeout sending notification to https://mobile-apps.home-assistant.io/api/sendPush/android/v1
+2025-11-20 07:05:23.013 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration nws_alerts which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
+2025-11-20 07:05:23.014 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration alarmo which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
+2025-11-20 07:05:23.015 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration hacs which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
+2025-11-20 07:05:23.015 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration alexa_media which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
+2025-11-20 07:06:17.102 ERROR (MainThread) [homeassistant.components.template.template_entity] TemplateError('ValueError: Template error: float got invalid input 'unavailable' when rendering template '{% set T = states('sensor.office_temperature_average') | float %} {% set R = states('sensor.office_desk_humidity') | float %} {% set c = [ -42.379, 2.04901523, 10.14333127, -0.22475541, -6.83783e-3, -5.481717e-2, 1.22874e-3, 8.5282e-4, -1.99e-6 ] %} {% if T >= 80 %}
+  {{ [c[0], c[1]*T, c[2]*R, c[3]*T*R, c[4]*T*T, c[5]*R*R, c[6]*T*T*R, c[7]*T*R*R, c[8]*T*T*R*R] | sum | round(2) }}
+{% else %}
+  {{ (0.5 * (T + 61.0 + ((T-68.0)*1.2) + (R*0.094))) | round(2) }}
+{% endif %}' but no default was specified') while processing template 'Template<template=({% set T = states('sensor.office_temperature_average') | float %} {% set R = states('sensor.office_desk_humidity') | float %} {% set c = [ -42.379, 2.04901523, 10.14333127, -0.22475541, -6.83783e-3, -5.481717e-2, 1.22874e-3, 8.5282e-4, -1.99e-6 ] %} {% if T >= 80 %}
+  {{ [c[0], c[1]*T, c[2]*R, c[3]*T*R, c[4]*T*T, c[5]*R*R, c[6]*T*T*R, c[7]*T*R*R, c[8]*T*T*R*R] | sum | round(2) }}
+{% else %}
+  {{ (0.5 * (T + 61.0 + ((T-68.0)*1.2) + (R*0.094))) | round(2) }}
+{% endif %}) renders=40>' for attribute '_attr_native_value' in entity 'sensor.office_feels_like_temperature'

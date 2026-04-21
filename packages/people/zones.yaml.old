@@ -1,0 +1,90 @@
+#
+# When leaving the house, more times than not, we would leave the Home zone only to re-enter on the next street over.
+# I created another zone centered on the house with a wider radius called Near Home
+# This cretes a buffer zone around the Home zone. It also provides an indication that I am ebtering the Near Home zone
+# provising more flexibility on return Home automations.
+#
+
+automation:
+  - id: "person_entering_near_home_zone"
+    alias: "Person Entering Near Home Zone"
+    mode: "queued"
+    max: 5
+    trigger:
+      - trigger: state
+        entity_id:
+          - person.rick_fox
+          - person.tracy_fox
+        # from: "not_home"
+        # to: "near_home"
+    action:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ state_attr(trigger.entity_id,'user_id') == 'c04bc876fa7d454084bdfdf8a153a476' }}"
+            sequence:
+              action: script.rick_changing_zones
+              data:
+                trig_id: "{{ trigger.entity_id }}"
+                state_to: "{{ trigger.to_state.state }}"
+                state_from: "{{ trigger.from_state.state }}"
+          - conditions:
+              - condition: template
+                value_template: "{{ state_attr(trigger.entity_id,'user_id') == 'fe6a249661664e96a19486145703ad8c' }}"
+            sequence:
+              action: script.tracy_changing_zones
+              data:
+                trig_id: "{{ trigger.entity_id }}"
+                state_to: "{{ trigger.to_state.state }}"
+                state_from: "{{ trigger.from_state.state }}"
+
+script:
+  rick_changing_zones:
+    alias: Rick Changing Zones
+    sequence:
+      - service: system_log.write
+        data:
+          level: warning
+          message: >
+            RICK ZONE CHANGE:
+            from={{ state_from }}
+            to={{ state_to }}
+            arriving={{ states('input_boolean.rick_arriving') }}
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ state_to == 'Near Home' and state_from == 'not_home' }}"
+            sequence:
+              # Change the input boolean to on
+              - action: input_boolean.turn_on
+                entity_id: input_boolean.rick_arriving
+          - conditions:
+              - condition: template
+                value_template: "{{ state_to == 'home' and state_from == 'Near Home' and is_state('input_boolean.rick_arriving', 'on') }}"
+            sequence:
+              - action: script.rick_home
+        default: []
+        #  - action: input_boolean.turn_off
+        #    target:
+        #      entity_id: input_boolean.rick_arriving
+
+  tracy_changing_zones:
+    alias: Tracy Changing Zones
+    sequence:
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ state_to == 'Near Home' and state_from == 'not_home' }}"
+            sequence:
+              # Change the input boolean to on
+              - action: input_boolean.turn_on
+                entity_id: input_boolean.tracy_arriving
+          - conditions:
+              - condition: template
+                value_template: "{{ state_to == 'home' and state_from == 'Near Home' and is_state('input_boolean.tracy_arriving', 'on') }}"
+            sequence:
+              - action: script.tracy_home
+        default:
+          - action: input_boolean.turn_off
+            target:
+              entity_id: input_boolean.tracy_arriving

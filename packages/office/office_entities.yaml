@@ -1,0 +1,45 @@
+group:
+  office_motion:
+    name: Office Motion Sensors
+    entities: binary_sensor.office_motion_sensor_occupancy
+
+timer:
+  office_motion_timer:
+    name: Office Motion Timer
+    duration: 00:05:00
+    restore: true
+
+  android_display_timer:
+    name: Android Display Timer
+    duration: 00:01:45
+    restore: true
+
+input_boolean:
+  office_occupied:
+    name: Office Occupied
+    icon: mdi:home
+
+  office_dnd:
+    name: Office Do Not Disturb
+    icon: mdi:minus-circle
+
+template:
+- sensor:
+  - name: "Office Temperature - Average"
+    unit_of_measurement: "°C" # Or "°F"
+    state: >
+      {{ ((states('sensor.office_desk_temperature') | float(0) +
+          states('sensor.office_door_temperature') | float(0) +
+          states('sensor.office_motion_sensor_device_temperature') | float(0)) / 3) | round(2) }}
+
+  - name: "Office Feels Like Temperature"
+    unit_of_measurement: '°F'
+    state: >
+      {% set T = states('sensor.office_temperature_average') | float %}
+      {% set R = states('sensor.office_desk_humidity') | float %}
+      {% set c = [ -42.379, 2.04901523, 10.14333127, -0.22475541, -6.83783e-3, -5.481717e-2, 1.22874e-3, 8.5282e-4, -1.99e-6 ] %}
+      {% if T >= 80 %}
+        {{ [c[0], c[1]*T, c[2]*R, c[3]*T*R, c[4]*T*T, c[5]*R*R, c[6]*T*T*R, c[7]*T*R*R, c[8]*T*T*R*R] | sum | round(2) }}
+      {% else %}
+        {{ (0.5 * (T + 61.0 + ((T-68.0)*1.2) + (R*0.094))) | round(2) }}
+      {% endif %}

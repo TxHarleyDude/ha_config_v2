@@ -1,0 +1,44 @@
+automation:
+  - id: kitchen_occupancy_changed
+    alias: "Kitchen: Occupancy Changed"
+    description: "Manages the kitchen occupied boolean using a 5-minute timer."
+    trigger:
+      - trigger: state
+        entity_id: binary_sensor.kitchen_motion_sensor_occupancy
+        to: "on"
+        id: "motion_detected"
+      - trigger: state
+        entity_id: binary_sensor.kitchen_motion_sensor_occupancy
+        to: "off"
+        id: "motion_cleared"
+      - trigger: state
+        entity_id: timer.kitchen_occupancy
+        to: "idle"
+        id: "timer_expired"
+    action:
+      - choose:
+          # Motion starts: Turn on boolean and reset/start timer
+          - conditions:
+              - condition: trigger
+                id: "motion_detected"
+            sequence:
+              - action: input_boolean.turn_on
+                target:
+                  entity_id: input_boolean.kitchen_occupied
+              - action: timer.start
+                target:
+                  entity_id: timer.kitchen_occupancy
+                data:
+                  duration: "00:05:00"
+          # Motion stops: Just let the timer keep running (it was started/reset at last motion)
+          # No action needed here unless you want to restart the timer specifically on 'off'
+
+          # Timer expires: Turn off the boolean
+          - conditions:
+              - condition: trigger
+                id: "timer_expired"
+            sequence:
+              - action: input_boolean.turn_off
+                target:
+                  entity_id: input_boolean.kitchen_occupied
+    mode: restart

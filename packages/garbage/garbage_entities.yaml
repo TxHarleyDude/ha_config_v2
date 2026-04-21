@@ -1,0 +1,35 @@
+input_boolean:
+  garbage_day:
+    name: Garbage Day
+    icon: mdi:delete
+
+  recycling_day:
+    name: Recycling Day
+    icon: mdi:recycle
+
+template:
+  - sensor:
+    - unit_of_measurement: days
+      default_entity_id: sensor.days_till_garbage_pickup
+      icon: mdi:calendar-clock
+      name: Days Till Garbage Pickup
+      state: >
+        {% set t = now() %} {% set midnight = today_at() %}
+        {% set event = state_attr('calendar.garbage', 'start_time') | as_datetime | as_local %} 
+        {% set delta = event - midnight %} 
+        {{ delta.days }}
+
+  - sensor:
+    - unit_of_measurement: days
+      default_entity_id: sensor.days_till_recycling_pickup
+      icon: mdi:calendar-clock
+      name: Days Till Recycling Pickup
+      state: >
+        {% set t = now() %} 
+        {% set midnight = today_at() %} 
+        {% set event = state_attr('calendar.recycling', 'start_time') | as_datetime | as_local %} 
+        {% set delta = event - midnight %} 
+        {{ delta.days }}
+
+
+

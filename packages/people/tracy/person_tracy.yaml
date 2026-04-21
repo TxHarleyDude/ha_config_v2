@@ -1,0 +1,41 @@
+script:
+  tracy_home:
+    alias: "Tracy Home"
+    sequence:
+      # condition to check if tracy is arriving
+      # - condition: state
+      #   entity_id: input_boolean.tracy_arriving
+      #   state: 'on'
+
+      # Change the input boolean to off
+      - action: input_boolean.turn_on
+        entity_id: input_boolean.tracy_home
+
+      - action: script.general_notification
+        data:
+          title: "Person Notification"
+          message: "Tracy is marked as home."
+          devices: "all"
+          priority: "time-sensitive"
+          tag: "person_notification_tracy"
+
+      - action: input_select.select_option
+        target:
+          entity_id: input_select.last_person_home
+        data:
+          option: "Tracy"
+
+  tracy_away:
+    alias: "Tracy Away"
+    sequence:
+      # Change the input boolean to off
+      - action: input_boolean.turn_off
+        entity_id: input_boolean.tracy_home
+
+      - action: script.general_notification
+        data:
+          title: "Person Notification"
+          message: "Tracy is marked as away."
+          devices: "all"
+          priority: "time-sensitive"
+          tag: "person_notification_tracy"

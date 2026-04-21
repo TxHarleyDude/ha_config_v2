@@ -1,0 +1,77 @@
+group:
+  # monitored entities to check if they are online
+  monitored_entities:
+    name: Monitored Entities
+    entities:
+      - binary_sensor.entry_front_door_contact
+      - binary_sensor.sunroom_back_door_contact
+      - binary_sensor.driveway_back_gate
+      - binary_sensor.garage_garage_door
+      - binary_sensor.kitchen_motion_sensor_occupancy
+      - binary_sensor.laundry_room_dryer_vibration
+      - binary_sensor.office_desk_chair
+      - binary_sensor.office_door_contact
+      - binary_sensor.office_motion_sensor_occupancy
+      #- automation.android_screen_on_repeat
+
+template:
+  # important entities
+  - sensor:
+      - name: "Unavailable Entities"
+        unique_id: unavailable_entities
+        icon: "{{ iif(states(this.entity_id)|int(-1) > 0, 'mdi:alert-circle', 'mdi:check-circle') }}"
+        state_class: measurement
+        unit_of_measurement: entities
+        state: "{{ expand('group.monitored_entities') | rejectattr('state', 'equalto', '') | selectattr('state', 'in', ['unavailable', 'unknown', 'none']) | list | count }}"
+        attributes:
+          last_update: “{{now()}}”
+          friendly_name: "Offline Entities"
+          names: "{{ expand('group.monitored_entities') | rejectattr('state', 'equalto', '') | selectattr('state', 'in', ['unavailable', 'unknown', 'none']) | join(', ', attribute='attributes.friendly_name') | truncate(252) or 'Online' }}"
+          count: "{{ expand('group.monitored_entities') | rejectattr('state', 'equalto', '') | selectattr('state', 'in', ['unavailable', 'unknown', 'none']) | list | count }}"
+
+
+# This automation is not working!!!!!!!!!
+
+
+
+automation:
+  - id: unavailable_entities_notification
+    alias: "Unavailable Entities Notification"
+    description: "Create persistent notification if unavailable entities, dismiss if none."
+    mode: restart
+    trigger:
+      - trigger: state
+        entity_id: sensor.unavailable_entities
+        attribute: names
+        to: ~
+    condition:
+      - condition: template
+        alias: "Sensor state is a valid numerical value"
+        value_template: >
+          {{ is_number(trigger.from_state.state)
+              and is_number(trigger.to_state.state) }}
+    action:
+      - if:
+          - condition: numeric_state
+            entity_id: sensor.unavailable_entities
+            below: 1
+        then:
+          - action: persistent_notification.dismiss
+            data:
+              notification_id: unavailable_entities
+        else:
+          - action: persistent_notification.create
+            data:
+              notification_id: unavailable_entities
+              title: "Unavailable Entities"
+              message: "{{ state_attr('sensor.unavailable_entities', 'names') | join('\n') }}"
+              # message: "Hello World"
+
+
+###############################################################################
+
+recorder:
+  exclude:
+    entities:
+      - sensor.unavailable_entities
+

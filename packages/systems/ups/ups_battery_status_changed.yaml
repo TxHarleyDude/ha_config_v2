@@ -1,0 +1,51 @@
+automation:
+  # 
+  # UPS Battery Power Activated
+  # 
+  - alias: UPS Battery Power Activated
+    id: rack_ups_battery_power_activated
+    trigger:
+      - trigger: state
+        entity_id: 
+          - sensor.office_rack_ups_status_data
+        to: "OB DISCHRG"
+    action:
+      # Send a a critical notification
+      - action: script.general_notification
+        data:
+          title: >-
+            {% if state_attr(trigger.entity_id,'friendly_name') == 'Office Rack UPS Status data' %}
+              {{ "HA Server Power Outage!" }}
+            {% elif state_attr(trigger.entity_id,'friendly_name') == 'Another UPS' %}
+              {{ "Another UPS Power Outage!" }}
+            {% endif %}
+          message: "🚨 Power outage! UPS is now on battery."
+          devices: "rf"
+          priority: "critical"
+          tag: "ups-power-outage"
+
+
+  # 
+  # UPS Battery Power Deactivated
+  # 
+  - alias: UPS Battery Power Deactivated
+    id: rack_ups_battery_power_deactivated
+    trigger:
+      - trigger: state
+        entity_id: 
+          - sensor.office_rack_ups_status_data
+        to: "OL CHRG"
+    action:
+      - action: script.general_notification
+        data:
+          title: >-
+            {% if state_attr(trigger.entity_id,'friendly_name') == 'Office Rack UPS Status data' %}
+              {{ "HA Server UPS Power Restored!" }}
+            {% elif state_attr(trigger.entity_id,'friendly_name') == 'Another UPS' %}
+              {{ "Another UPS Power Outage!" }}
+            {% endif %}
+          message: "The UPS is now back on AC power."
+          devices: "rf"
+          priority: "time-sensitive"
+          tag: "ups-power-restored"
+        

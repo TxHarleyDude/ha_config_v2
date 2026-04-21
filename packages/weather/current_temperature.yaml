@@ -1,0 +1,10 @@
+template:
+  - sensor:
+    - unique_id: Outside Temperature
+      unit_of_measurement: °F
+      device_class: temperature
+      default_entity_id: sensor.outside_temperature
+      icon: mdi:thermometer
+      name: Outside temperature
+      state: >
+        {{ state_attr('weather.home', 'temperature') | int }}

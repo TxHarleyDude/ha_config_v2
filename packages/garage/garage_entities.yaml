@@ -1,0 +1,10 @@
+input_boolean:
+  garage_closing:
+    name: Garage Closing
+    icon: mdi:garage-open
+
+timer:
+  garage_door_closed:
+    duration: "00:00:30"
+    name: Garage Door Closed
+

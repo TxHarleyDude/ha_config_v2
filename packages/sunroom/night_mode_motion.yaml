@@ -1,0 +1,49 @@
+automation:
+  - alias: "Motion Detected - Night Mode"
+    id: "motion_detected_night_mode"
+    mode: single
+    trigger:
+      - trigger: state
+        entity_id: binary_sensor.sunroom_motion_occupancy
+        to: "on"
+    condition:
+      - condition: state
+        entity_id: group.people_home
+        state: "on"
+      - condition: state
+        entity_id: input_select.house_mode
+        state: "Night"
+    action:
+      - action: alarm_control_panel.alarm_disarm
+        target:
+          entity_id: alarm_control_panel.alarmo
+      - action: timer.start
+        target:
+          entity_id: timer.sunroom_motion_timer
+      - action: script.general_notification
+        data:
+          title: "Motion Detected - Night Mode"
+          message: "Motion detected in Sunroom"
+          devices: "rf"
+          priority: "time-sensitive"
+          tag: "motion_detected_event"
+
+  - alias: Sunroom unoccupied
+    id: sunroom_unoccupied
+    initial_state: true
+    trigger:
+      - trigger: event
+        event_type: timer.finished
+        event_data:
+          entity_id: timer.sunroom_motion_timer
+    condition:
+      - condition: state
+        entity_id: input_select.house_mode
+        state: "Night"
+      - condition: state
+        entity_id: alarm_control_panel.alarmo
+        state: "disarmed"
+    action:
+      - action: alarm_control_panel.alarm_arm_night
+        target:
+          entity_id: alarm_control_panel.alarmo

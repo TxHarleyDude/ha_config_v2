@@ -1,0 +1,7 @@
+camera:
+  - platform: generic
+    name: Driveway West
+    still_image_url: http://192.168.1.10/ISAPI/Streaming/channels/801/picture # Optional, for still images
+    stream_source: rtsp://192.168.1.10:port/path/to/stream # For RTSP streams
+    username: your_username home_Assistant
+    password: your_password Fs@c0mptel

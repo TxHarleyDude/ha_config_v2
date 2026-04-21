@@ -1,0 +1,23 @@
+automation:
+  - alias: "Away Mode - Set Alarm"
+    id: "away_mode_set_Alarm"
+    mode: single
+    trigger:
+      - trigger: state
+        entity_id: group.people_home
+        to: "off"
+        for:
+          hours: 0
+          minutes: 0
+          seconds: 10
+    condition:
+      - condition: state
+        entity_id: group.people_home
+        state: "off"
+      - condition: state
+        entity_id: alarm_control_panel.alarmo
+        state: "disarmed"
+    action:
+      - action: alarm_control_panel.alarm_arm_away
+        target:
+          entity_id: alarm_control_panel.alarmo

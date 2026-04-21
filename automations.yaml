@@ -1,0 +1,42 @@
+- id: '1771170603278'
+  alias: Wireless Button
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - event.wireless_button_action
+    not_from:
+    - unavailable
+    not_to:
+    - unavailable
+    - unknown
+  conditions: []
+  actions:
+  - action: switch.toggle
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.multiuse_kauf_plug
+  mode: single
+- id: '1771967949128'
+  alias: Office - Phone Off-Hook
+  description: ''
+  triggers:
+  - trigger: webhook
+    allowed_methods:
+    - GET
+    local_only: true
+    webhook_id: -cYZ5b5wLH3kHsAwf1FNtuHSa
+  conditions:
+  - condition: state
+    entity_id: media_player.spotify_1237516216
+    state:
+    - Galaxy Tab A7
+    attribute: source
+  actions:
+  - action: media_player.media_pause
+    metadata: {}
+    target:
+      device_id: da67c21ac91e96080b97988b7557ae4d
+    data: {}
+  mode: single

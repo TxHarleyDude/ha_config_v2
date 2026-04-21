@@ -1,0 +1,71 @@
+automation:
+  - id: "turn_on_tablet_display"
+    alias: "Turn On Android Tablet Display When Occupancy Changes to On"
+    initial_state: true
+    trigger:
+      - trigger: state
+        entity_id: input_boolean.office_occupied
+        from: "off"
+        to: "on"
+      - trigger: event
+        event_type: timer.finished
+        event_data:
+          entity_id: timer.android_display_timer
+    condition:
+      condition: and
+      conditions:
+        # - condition time between 0530 and 0830
+        - condition: time
+          after: "05:30:00"
+          before: "21:30:00"
+        - condition: state
+          entity_id: input_boolean.house_occupied
+          state: "on"
+        - condition: state
+          entity_id: input_boolean.office_occupied
+          state: "on"
+    action:
+      - action: notify.mobile_app_office_tablet
+        data:
+          message: command_screen_on
+          data:
+            ttl: 0
+            priority: high
+      - action: timer.start
+        data:
+          entity_id: timer.android_display_timer
+
+
+  - id: "stop_tablet_display_timer"
+    alias: "Stop Tablet Display Timer"
+    initial_state: true
+    trigger:
+      - trigger: state
+        entity_id: input_boolean.office_occupied
+        from: "on"
+        to: "off"
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: input_boolean.office_occupied
+          state: "off"
+    action:
+      - action: timer.cancel
+        data:
+          entity_id: timer.android_display_timer
+
+
+# Need to send command_screen_on every minute while office is occupied
+# Look here   - alias: Office unoccupied
+# For details on action
+
+# Control Volume Level
+# action: notify.mobile_app_sm_t500
+# data:
+#   message: command_volume_level
+#   data:
+#     media_stream: music_stream
+#     command: 8
+#     ttl: 0
+#     priority: high

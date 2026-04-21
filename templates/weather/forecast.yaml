@@ -1,0 +1,32 @@
+- trigger:
+    - trigger: homeassistant
+      event: start
+    - trigger: time_pattern
+      hours: /1
+    - trigger: event
+      event_type: event_template_reloaded
+  action:
+    - action: weather.get_forecasts
+      data:
+        type: hourly
+      target:
+        entity_id: weather.home
+      response_variable: hourly
+    - action: weather.get_forecasts
+      data:
+        type: daily
+      target:
+        entity_id: weather.home
+      response_variable: daily
+  sensor:
+    # PirateWeather
+    - name: Pirate Weather Forecast - Hourly
+      unique_id: pirateweather_forecast_hourly
+      state: "{{ now().isoformat() }}"
+      attributes:
+        forecast: "{{ hourly['weather.home'].forecast }}"
+    - name: Pirate Weather Forecast - Daily
+      unique_id: pirateweather_forecast_daily
+      state: "{{ now().isoformat() }}"
+      attributes:
+        forecast: "{{ daily['weather.home'].forecast }}"

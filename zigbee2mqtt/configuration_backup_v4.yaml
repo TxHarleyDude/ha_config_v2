@@ -1,0 +1,76 @@
+version: 4
+mqtt:
+  base_topic: zigbee2mqtt
+  server: mqtt://core-mosquitto:1883
+  user: addons
+  password: tae3ruGhoo0moo0otie2tibunohth6eeChah6ur6Thaizohjaeh5nieB0cheiJoh
+serial:
+  port: /dev/ttyUSB0
+  adapter: zstack
+  baudrate: 115200
+  rtscts: false
+advanced:
+  log_level: error
+  channel: 11
+  network_key:
+    - 45
+    - 201
+    - 157
+    - 179
+    - 163
+    - 158
+    - 47
+    - 209
+    - 81
+    - 217
+    - 56
+    - 137
+    - 53
+    - 49
+    - 244
+    - 247
+  pan_id: 14880
+  ext_pan_id:
+    - 49
+    - 2
+    - 168
+    - 158
+    - 38
+    - 126
+    - 255
+    - 169
+frontend:
+  enabled: true
+  port: 8099
+homeassistant:
+  enabled: true
+devices:
+  '0x0ceff6fffe591bd4':
+    friendly_name: Wireless Button
+    homeassistant:
+      name: Wireless Button
+    optimistic: true
+  '0x00158d00091e9422':
+    friendly_name: Office Door
+  '0x00158d0007e635bc':
+    friendly_name: Front Door
+  '0x00158d0007bf12f1':
+    friendly_name: Back Door
+  '0x00158d000a9844a1':
+    friendly_name: Water Pump
+  '0x00158d000977ed65':
+    friendly_name: Office Outlet 1
+  '0x00158d00091e960e':
+    friendly_name: HVAC Filter Door
+  '0x001788010d38d564':
+    friendly_name: Sink Light
+  '0x00158d000af02d81':
+    friendly_name: Office Chair
+  '0x54ef441000c42c0c':
+    friendly_name: Motion Sensor
+  '0x00158d000ad92814':
+    friendly_name: Clothes Dryer
+  '0x54ef44100144f29b':
+    friendly_name: Kitchen Motion Sensor
+    homeassistant:
+      name: Kitchen Motion Sensor

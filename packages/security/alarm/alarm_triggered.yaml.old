@@ -1,0 +1,16 @@
+automation:
+  - alias: "Alarm Triggered"
+    id: "alarm_triggered"
+    mode: single
+    trigger:
+      - trigger: state
+        entity_id: alarm_control_panel.alarmo
+        to: "triggered"
+    condition:
+      - condition: state
+        entity_id: group.people_home
+        state: "off"
+    action:
+      - action: alarm_control_panel.alarm_disarm
+        target:
+          entity_id: alarm_control_panel.alarmo

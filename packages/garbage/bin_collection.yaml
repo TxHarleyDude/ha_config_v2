@@ -1,0 +1,69 @@
+automation:
+  - id: garbage_day_event
+    alias: Garbage Day Event
+    mode: "single"
+    trigger:
+      - trigger: calendar
+        event: start
+        entity_id: calendar.garbage
+    action:
+      - action: input_boolean.turn_on
+        entity_id: input_boolean.garbage_day
+      # will keep this here for now
+      - action: persistent_notification.create
+        data:
+          notification_id: garbage-day-alert
+          title: Garbage Notification
+          message: >-
+            {{ [ 
+                "Taking out the garbage – because even your garbage deserves a night on the town!.", 
+                "Trash day is like a weekly celebration for your garbage. They get a one-way ticket out of here!.",
+                "Trash day is your way of telling your garbage, 'It's not you, it's me – I need space.",
+                "Taking out the trash, turning 'waste' into 'space.' One bag at a time.",
+                "Trash day: the only day your garbage gets to see the outside world. Enjoy your brief escape!"
+                ] | random }}
+
+  - id: recycling_day_event
+    alias: Recycling Day Event
+    trigger:
+      - trigger: calendar
+        event: start
+        entity_id: calendar.recycling
+    action:
+      - action: input_boolean.turn_on
+        entity_id: input_boolean.recycling_day
+
+  - id: reset_garbage_day
+    alias: Reset Garbage Day
+    trigger:
+      - trigger: template
+        value_template: >-
+          {{ 6 == states('sensor.days_till_garbage_pickup') | int }}
+    #      - trigger: event
+    #        event_type: automation_reloaded
+    #      - trigger: homeassistant
+    #        event: start
+    condition:
+      - condition: state
+        entity_id: input_boolean.garbage_day
+        state: "on"
+    #      - condition: template
+    #        value_template: >-
+    #          {{ 6 == states('sensor.days_till_garbage_pickup') | int }}
+    actions:
+      - action: input_boolean.turn_off
+        target:
+          entity_id:
+            - input_boolean.garbage_day
+            - input_boolean.recycling_day
+
+script:
+  manual_reset_garbage_day:
+    alias: Manual Reset Garbage Day
+    mode: "queued"
+    sequence:
+      - action: input_boolean.turn_off
+        target:
+          entity_id:
+            - input_boolean.garbage_day
+            - input_boolean.recycling_day

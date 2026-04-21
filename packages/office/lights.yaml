@@ -1,0 +1,51 @@
+automation:
+  - id: office_desk_lamp_entry_behavior
+    alias: Office Desk Lamp - Entry Behavior
+    description: Turn on desk lamp if office becomes occupied and room is dim
+    trigger:
+      - trigger: state
+        entity_id: input_boolean.office_occupied
+        to: 'on'
+    condition:
+      - condition: numeric_state
+        entity_id: sensor.office_motion_sensor_illuminance
+        below: 70
+    action:
+      - action: switch.turn_on
+        target:
+          entity_id: switch.multiuse_kauf_plug
+    mode: single
+    
+  - id: office_desk_lamp_ambient_light_trigger
+    alias: Office Desk Lamp - Ambient Light Trigger
+    description: Turn on desk lamp when room dims while office is occupied
+    trigger:
+      - trigger: numeric_state
+        entity_id: sensor.office_motion_sensor_illuminance
+        below: 70
+        for: "00:03:00"
+    condition:
+      - condition: state
+        entity_id: input_boolean.office_occupied
+        state: 'on'
+    action:
+      - action: switch.turn_on
+        target:
+          entity_id: switch.multiuse_kauf_plug
+    mode: single
+  - id:  office_desk_lap_exit_behavior
+    alias: Office Desk Lamp - Exit Behavior
+    description: Turn off desk lamp when office is no longer occupied
+    trigger:
+      - trigger: state
+        entity_id: input_boolean.office_occupied
+        to: 'off'
+    action:
+      - action: switch.turn_off
+        target:
+          entity_id: switch.multiuse_kauf_plug
+      # Optional: Turn off overhead if desired
+      # - service: switch.turn_off
+      #   target:
+      #     entity_id: switch.office_overhead_light
+    mode: single

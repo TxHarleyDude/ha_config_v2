@@ -1,0 +1,94 @@
+script:
+  rick_home:
+    alias: Rick Home
+    sequence:
+      # Change the input boolean to on
+      - action: input_boolean.turn_on
+        entity_id: input_boolean.rick_home
+
+      - action: input_select.select_option
+        target:
+          entity_id: input_select.ricks_status
+        data:
+          option: "Home"
+
+      - action: script.general_notification
+        data:
+          title: "Person Notification"
+          message: "Rick is marked as home."
+          devices: "all"
+          priority: "time-sensitive"
+          tag: "person_notification_rick"
+
+      - action: input_select.select_option
+        target:
+          entity_id: input_select.last_person_home
+        data:
+          option: "Rick"
+
+  rick_arriving:
+    alias: Rick Arriving
+    sequence:
+      # Need a condition to make sure the person is just not passing back through the home zone to leave.
+      # Only continue if the previous input_select.ricks_status is Away.
+      - condition: template
+        value_template: "{{ is_state('input_select.ricks_status', 'Away') }}"
+
+      - action: input_select.select_option
+        target:
+          entity_id: input_select.ricks_status
+        data:
+          option: "Arriving"
+
+      # Change the input boolean to on
+      - action: input_boolean.turn_on
+        entity_id: input_boolean.rick_home
+
+      - action: script.general_notification
+        data:
+          title: "Person Notification"
+          message: "Rick is marked as arriving."
+          devices: "all"
+          priority: "time-sensitive"
+          tag: "person_notification_rick"
+          
+  rick_leaving:
+    alias: Rick Leaving
+    sequence:
+      - condition: template 
+        value_template: "{{ is_state('input_select.ricks_status', 'Home') }}"
+
+      - action: input_select.select_option
+        target:
+          entity_id: input_select.ricks_status
+        data:
+          option: "Leaving"
+
+      - action: script.general_notification
+        data:
+          title: "Person Notification"
+          message: "Rick is marked as leaving."
+          devices: "all"
+          priority: "time-sensitive"
+          tag: "person_notification_rick"
+
+  rick_away:
+    alias: Rick Away
+    sequence:
+      # Change the input boolean to off
+      - action: input_boolean.turn_off
+        entity_id: input_boolean.rick_home
+
+      - action: input_select.select_option
+        target:
+          entity_id: input_select.ricks_status
+        data:
+          option: "Away"
+
+      - action: script.general_notification
+        data:
+          title: "Person Notification"
+          message: "Rick is marked as away."
+          devices: "all"
+          priority: "time-sensitive"
+          tag: "person_notification_rick"
