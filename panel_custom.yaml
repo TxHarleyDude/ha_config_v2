@@ -1,7 +1,7 @@
   - name: config/developer-tools
     sidebar_title: Tools
     sidebar_icon: mdi:hammer-wrench
-    module_url: 'https://foxdenabode.duckdns.org:8123/developer-tools'
+    module_url: !secret panel_url
     embed_iframe: true
     require_admin: true
     config:
