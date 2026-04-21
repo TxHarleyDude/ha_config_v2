@@ -20,4 +20,5 @@ __pycache__/
 *.swp
 
 zigbee2mqtt/state.json
-
+.cache/
+.vscode/

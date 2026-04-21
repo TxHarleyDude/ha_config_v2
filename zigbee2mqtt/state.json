@@ -51,10 +51,10 @@
         "device_temperature": 31,
         "power_outage_count": 20,
         "state": "ON",
-        "power": 57.25,
+        "power": 57.36,
         "linkquality": 132,
-        "energy": 368.63,
-        "consumption": 368.6340637207031
+        "energy": 368.64,
+        "consumption": 368.639892578125
     },
     "0x00158d00091e960e": {
         "voltage": 3005,
