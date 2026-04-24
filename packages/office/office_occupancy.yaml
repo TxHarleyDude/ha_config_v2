@@ -17,8 +17,8 @@ automation:
       - action: input_boolean.turn_on
         entity_id: input_boolean.office_occupied
 
-  - alias: Office unoccupied
-    id: office_unoccupied
+  - id: office_unoccupied
+    alias: Office unoccupied
     initial_state: true
     trigger:
       - trigger: event

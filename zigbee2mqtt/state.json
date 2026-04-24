@@ -15,7 +15,7 @@
         "contact": false,
         "voltage": 3015,
         "battery": 100,
-        "device_temperature": 28,
+        "device_temperature": 30,
         "power_outage_count": 6,
         "trigger_count": 0,
         "linkquality": 147
@@ -25,7 +25,7 @@
         "contact": true,
         "voltage": 3015,
         "battery": 100,
-        "device_temperature": 27,
+        "device_temperature": 30,
         "power_outage_count": 24,
         "trigger_count": 0
     },
@@ -33,13 +33,13 @@
         "linkquality": 105,
         "voltage": 3045,
         "battery": 100,
-        "device_temperature": 23,
+        "device_temperature": 26,
         "power_outage_count": 15,
-        "trigger_count": 2,
+        "trigger_count": 0,
         "contact": true
     },
     "0x00158d000a9844a1": {
-        "device_temperature": 29,
+        "device_temperature": 31,
         "power_outage_count": 46,
         "state": "OFF",
         "power": 0,
@@ -48,18 +48,18 @@
         "linkquality": 117
     },
     "0x00158d000977ed65": {
-        "device_temperature": 31,
+        "device_temperature": 35,
         "power_outage_count": 20,
         "state": "ON",
-        "power": 57.23,
+        "power": 56.99,
         "linkquality": 132,
-        "energy": 368.65,
-        "consumption": 368.6463623046875
+        "energy": 370.97,
+        "consumption": 370.9685974121094
     },
     "0x00158d00091e960e": {
         "voltage": 3005,
         "battery": 100,
-        "device_temperature": 26,
+        "device_temperature": 29,
         "power_outage_count": 16,
         "trigger_count": 0,
         "contact": true,
@@ -75,7 +75,7 @@
             "state": "idle",
             "installed_version": 16787456,
             "latest_version": 16787456,
-            "latest_source": null,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0114-01002800-ConfLightBLE-Lamps-EFR32MG21.zigbee",
             "latest_release_notes": null
         }
     },
@@ -86,7 +86,7 @@
         "battery": 100,
         "device_temperature": 29,
         "power_outage_count": 13,
-        "trigger_count": 29
+        "trigger_count": 0
     },
     "0x54ef441000c42c0c": {
         "voltage": 3022,
@@ -95,8 +95,8 @@
         "motion_sensitivity": "medium",
         "trigger_indicator": false,
         "occupancy": false,
-        "illuminance": 19,
-        "device_temperature": 25,
+        "illuminance": 15,
+        "device_temperature": 27,
         "power_outage_count": 0,
         "linkquality": 123
     },
@@ -107,7 +107,7 @@
         "voltage": 2885,
         "battery": 23,
         "device_temperature": 10,
-        "power_outage_count": 311,
+        "power_outage_count": 313,
         "angle": 8,
         "x_axis": 6,
         "y_axis": -21,
@@ -119,26 +119,26 @@
         "angle_y_absolute": 91
     },
     "0x54ef44100144f29b": {
-        "voltage": 3033,
+        "voltage": 3032,
         "battery": 100,
         "detection_interval": 30,
         "motion_sensitivity": "medium",
         "trigger_indicator": false,
         "occupancy": false,
-        "illuminance": 30,
+        "illuminance": 24,
         "linkquality": 87,
-        "device_temperature": 26,
+        "device_temperature": 28,
         "power_outage_count": 0
     },
     "0x54ef44100144f0a8": {
-        "voltage": 3058,
+        "voltage": 3066,
         "battery": 100,
         "detection_interval": 30,
         "motion_sensitivity": "medium",
         "trigger_indicator": false,
         "occupancy": false,
-        "illuminance": 28,
-        "device_temperature": 25,
+        "illuminance": 26,
+        "device_temperature": 27,
         "power_outage_count": 0
     }
 }
